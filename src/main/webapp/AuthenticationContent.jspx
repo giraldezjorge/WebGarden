@@ -1,0 +1,73 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+       
+<h2 class="info">
+    <fmt:message key="Authentication.title"/>
+</h2>
+          
+<html:xhtml/>
+
+<p><html:link action="ShowRegisterClient.do">
+        <fmt:message key="AuthenticationContent.registerClient"/>
+</html:link></p>
+
+<html:form action="Login.do" focus="loginName">
+        
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="AuthenticationContent.loginName"/>
+        </span>
+        <span class="entry">    
+            <html:text property="loginName" size="16" maxlength="30"/>
+            <html:errors property="loginName"/>
+        </span>
+    </div>
+    
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="ClientAttributes.pass"/>
+        </span>
+        <span class="entry">
+            <html:password property="password" size="16" maxlength="16"/>
+            <html:errors property="password"/>
+        </span>
+    </div>
+    
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="AuthenticationContent.rememberMyPassword"/>
+        </span>
+        <span class="entry">    
+            <html:checkbox property="rememberMyPassword"/>
+        </span>
+    </div>
+    
+    <div class="field">
+        <span class="label">
+            <fmt:message key="AuthenticationContent.loginBy"/>
+        </span>
+        <span class="entry">
+            <html:select property="loginBy">
+                <html:option value="CLI_ID">
+                    <fmt:message key="AuthenticationAttributes.client"/>
+                </html:option>
+                <html:option value="EMP_ID">
+                    <fmt:message key="AuthenticationAttributes.employee"/>
+                </html:option>
+            </html:select>
+            <html:errors property="loginBy"/>
+        </span>
+    </div>
+    
+    <div class="button">        
+        <html:submit>
+            <fmt:message key="Buttons.login"/>
+        </html:submit>
+    </div>
+    
+</html:form>
+
+</jsp:root>

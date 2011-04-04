@@ -1,0 +1,168 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:html="http://struts.apache.org/tags-html"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          version="2.0">
+
+<h2 class="info">
+    <fmt:message key="UpdateClientDetails.title"/>
+</h2>
+
+<html:xhtml/>
+
+
+<!-- Print register client form -->
+
+<html:form action="UpdateClientDetails.do" focus="firstName">
+        
+	<html:hidden property="NIF" />        
+    
+    <!-- FirstName -->
+    
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="ClientAttributes.firstName" />
+        </span>
+        <span class="entry">    
+            <html:text property="firstName" size="16" maxlength="20" />
+            <html:errors property="firstName" />
+        </span>
+    </div>
+    
+    <!-- Surname1 -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="ClientAttributes.surname1" />
+        </span>
+        <span class="entry">    
+            <html:text property="surname1" size="16" maxlength="20" />
+            <html:errors property="surname1" />
+        </span>
+    </div>
+
+    <!-- Surname2 -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="ClientAttributes.surname2" />
+        </span>
+        <span class="entry">    
+            <html:text property="surname2" size="16" maxlength="20" />
+            <html:errors property="surname2" />
+        </span>
+    </div>
+    
+    <!-- email -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="ClientAttributes.email" />
+        </span>
+        <span class="entry">    
+            <html:text property="email" size="25" maxlength="50" />
+            <html:errors property="email" />
+        </span>
+    </div>
+    
+    <!-- Dir -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="ClientAttributes.dir" />
+        </span>
+        <span class="entry">    
+            <html:text property="dir" size="16" maxlength="50" />
+            <html:errors property="dir" />
+        </span>
+    </div>
+    
+    <!-- tlf -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="ClientAttributes.tlf" />
+        </span>
+        <span class="entry">    
+            <html:text property="tlf" size="16" maxlength="16" />
+            <html:errors property="tlf" />
+        </span>
+    </div>
+    
+    <!-- cod_postal -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="ClientAttributes.cod_postal" />
+        </span>
+        <span class="entry">    
+            <html:text property="cod_postal" size="16" maxlength="16" />
+            <html:errors property="cod_postal" />
+        </span>
+    </div>
+    
+    <!-- poblacion -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="ClientAttributes.poblacion" />
+        </span>
+        <span class="entry">    
+            <html:text property="poblacion" size="16" maxlength="20" />
+            <html:errors property="poblacion" />
+        </span>
+    </div>
+    
+    <!-- Provincia -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="ClientAttributes.provincia" />
+        </span>
+        <span class="entry">    
+            <html:text property="provincia" size="16" maxlength="20" />
+            <html:errors property="provincia" />
+        </span>
+    </div>
+    
+    <!-- dir_facturacion -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="ClientAttributes.dir_facturacion" />
+        </span>
+        <span class="entry">    
+            <html:text property="dir_facturacion" size="16" maxlength="50" />
+            <html:errors property="dir_facturacion" />
+        </span>
+    </div>
+    
+    <c:choose>
+    <c:when test="${sessionScope.type == 'admin'}">
+	    <!-- VIP -->
+	    <div class="field">        
+	        <span class="label">
+	            <fmt:message key="ClientAttributes.VIP" />
+	        </span>
+	        <span class="entry">    
+	            <html:checkbox property="VIP"/>
+	        </span>
+	    </div>
+    </c:when>
+    <c:otherwise>
+    	<html:hidden property="VIP" />
+    </c:otherwise>
+    </c:choose>
+    
+    <!-- Register button -->
+    
+    <div class="button">
+        <html:submit><fmt:message key="Buttons.modify" /></html:submit>
+    </div>
+    
+</html:form>
+
+	<html:link action="Welcome.do"><fmt:message key="Buttons.back"/></html:link>
+
+</jsp:root>

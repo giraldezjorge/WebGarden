@@ -1,0 +1,25 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+          
+<h2 class="info">
+    <fmt:message key="Remove.title"/>
+</h2>
+
+<div class="removeContent">
+	<p><fmt:message key="RemoveContent.content"/></p>
+</div>
+
+<c:url var="removeClientURL" value="RemoveClient.do">
+<c:param name="identifierType" value="CLI_ID"/>
+<c:param name="identifier" value="${sessionScope.NIF}"/>
+</c:url>        
+<a href="${removeClientURL}"><fmt:message key="RemoveContent.remove"/></a>
+<![CDATA[ &nbsp; ]]>
+<![CDATA[ &nbsp; ]]>
+<a href="Welcome.do"><fmt:message key="RemoveContent.cancel"/></a>
+        				
+</jsp:root>

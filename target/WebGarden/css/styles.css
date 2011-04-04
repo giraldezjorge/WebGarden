@@ -1,0 +1,535 @@
+/* Body. */
+
+body {
+    margin-top: 50px;
+	padding: 0;
+	background: #FFFFFF url(../images/img01.jpg) repeat-x left top;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #837669;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: normal;
+	color: #649632;
+}
+
+h1 { font-size: 44px; }
+
+h2 { font-size: 20px; }
+
+h3 { }
+
+p, ul, ol {
+	margin-top: 0;
+	line-height: 240%;
+	text-align: justify;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+
+ul, ol { }
+
+img {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+/* Links. */
+
+a {
+	color: #000000;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+hr {
+	display: none;
+}
+
+/*** WINDOW ***/
+
+
+/***HEADER***/
+
+#headerContent {
+	width: 900px;
+	height: 60px;
+	margin: 0 auto;
+	background: url(images/img02.jpg) no-repeat left top;
+}
+
+
+/* MENU */
+
+#menu {
+	float: left;
+	width: 540px;
+	height: 61px;
+}
+
+#menu ul {
+	margin: 0;
+	padding: 20px 0 0 20px;
+	list-style: none;
+	line-height: normal;
+}
+
+#menu li {
+	display: block;
+	float: left;
+}
+
+#menu a {
+	display: block;
+	/*float: left;*/
+	margin-right: 5px;
+	padding: 5px 12px 5px 28px;
+	background: url(../images/img06.gif) no-repeat left 50%;
+	text-decoration: none;
+	font: 14px Georgia, "Times New Roman", Times, serif;
+	color: #FFFFFF;
+}
+
+#menu a:hover { text-decoration: underline; }
+
+#menu .current_page_item a {
+	color: #FFFFFF;
+}
+
+#idioms {
+	float: right;
+	width: 100px;
+	margin: 0;
+	padding: 20px 0 0 20px;	
+}
+
+#flag {
+	border-style: none;
+}
+
+#product {
+	width: 30%;
+	height: 35%;
+}
+
+#productDetail {
+	width: 50%;
+	height: 55%;
+}
+
+/* LOGO */
+
+#logo {
+	width: 900px;
+	height: 230px;
+	margin: 0 auto;
+	background: url(../images/img03.jpg) no-repeat left top;
+}
+
+#logo h1, #logo p {
+	margin: 0;
+	padding: 0 0 0 170px;
+	line-height: normal;
+}
+
+#logo h1 {
+	padding-top: 70px;
+}
+
+#logo h1 a {
+	text-decoration: none;
+	text-transform: lowercase;
+	color: #FFFFFF;
+}
+
+#logo h1 a:hover {
+	text-decoration: underline;
+}
+
+#logo p {
+	font: italic 13px Georgia, "Times New Roman", Times, serif;
+	color: #FFFFFF;
+}
+
+#logo p a {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+#logo p a:hover {
+	text-decoration: underline;
+}
+
+/* PAGE TITLE */
+
+#header {
+    width: 900px;
+	height: 60px;
+	margin: 0 auto;
+	background: url(../images/img02.jpg) no-repeat left top;
+}
+
+/*** PAGE BODY ***/
+
+#pageBody { 
+	padding: 220px 0px 0px 0px;
+	margin-top: 5px;
+	margin: 0 auto;
+    width: 900px;
+    min-height: 150px;
+}
+
+/* SIDEBAR */
+
+#sidebar {
+	float: left;
+	width: 280px;
+}
+
+#menuLinks {
+	height: 30px;
+	margin-bottom: 3px;
+	padding: 8px 0px 2px 40px;
+	color: #FFFFFF;
+}
+/*
+#sidebar a {
+    color : #fffac6;
+}
+*/
+#sidebar ul {
+	font-size: 13px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	line-height: normal;
+	margin-bottom: 10px;
+}
+
+#sidebar li {
+	margin: 0;
+	padding: 0 15px;
+	background:transparent url(../images/img08.gif) no-repeat scroll left center;
+	margin-left: 10px;
+}
+
+#sidebar p {
+	margin: 0;
+	padding: 0 20px;
+	line-height: 200%;
+}
+
+#sidebar h2 {
+	height: 33px;
+	margin: 0 0 8px 0px;
+	padding: 8px 0 2px 40px;
+	background: url(../images/img04.jpg) no-repeat left top;
+	font-size: 20px;
+	color: #FFFFFF;
+}
+
+/* Content. */
+
+#content {
+	text-align: center;
+	padding-top: 16px;
+	float: right;
+	width: 600px;
+	margin-bottom: 5px;
+}
+
+div.removeContent p {
+	text-align: center;
+	font-size: 14px;
+}
+
+h2.info {
+	text-align: left;
+    height: 30px;
+	margin-bottom: 3px;
+	padding: 8px 0px 2px 40px;
+	background: url(../images/img05.jpg) no-repeat left top;
+	color: #FFFFFF;
+}
+
+/* Categories Tree divs*/
+
+#back {
+	clear: both;
+	margin: 0 auto;
+	padding: 0;
+}
+
+#categorySons {
+	text-align: left;
+	float: left;
+	width: 160px;
+	min-height: 80px;
+}
+
+#categorySons h2 {
+	text-align: left;
+	margin-bottom: 3px;
+	padding: 8px 0px 2px 40px;
+	background: url(../images/img09.jpg) no-repeat left top;	
+	color: #FFFFFF;
+}
+
+#categoryProducts {
+	text-align: left;
+	float: right;
+	width: 440px;
+	margin-bottom: 5px;
+	min-height: 80px;
+}
+
+#categoryProducts h2 {
+	text-align: left;
+    height: 30px;
+	margin-bottom: 3px;
+	padding: 8px 0px 2px 40px;
+	background: url(../images/img10.jpg) no-repeat left top;	
+	color: #FFFFFF;
+}
+
+/* Forms. */
+
+form {
+    width: 100%;
+}
+
+div.field {
+    clear: both;
+    padding-top: 1em;
+    width: 100%;
+}
+
+div.field span.label {
+    float: left;
+    text-align: right;
+    font-weight: bold;
+    width: 49.5%;
+}
+
+div.field span.entry {
+    float: right;
+    text-align: left;
+    width: 49.5%;
+}
+
+div.button {
+    clear: both;
+    padding-top: 1em;
+    text-align: center;
+    width: 100%;
+}
+
+/*
+input, select, textarea  {
+    background-color: #f4f4f4;
+}
+*/
+
+/* General properties. */
+
+table th, strong {
+    font-weight: bold;
+}
+
+table th, td {
+    font-size: 12px;
+}
+
+/* Categories tree */
+
+table.categoriesTreeSonsDetails {
+	text-align: left;
+	margin-left: 10px;
+	width: 100%;
+	
+}
+
+table.categoriesTreeProductsDetails {
+	text-align: center;
+	margin-left: 10px;
+}
+
+/* Product */
+
+table.productsTable {
+	text-align: center;
+	margin: 0 auto;
+	width: 50%;
+}
+
+table.productDetails {
+	text-align: left;
+   	margin: 0 auto;
+   	width: 50%;
+}
+
+/* Category */
+
+table.categoryDetails {
+	text-align: left;
+   	margin: 0 auto;
+   	width: 50%;
+}
+
+table.categorySons {
+	text-align: center;
+	margin: 0 auto;
+	width: 50%;
+}
+
+table.categoryProducts {
+	text-align: left;
+	margin: 0 auto;
+	width: 75%;
+}
+
+table.categoriesTable {
+	text-align: center;
+	margin: 0 auto;
+	width: 50%;
+}
+
+/* Client */
+
+table.clientDetails {
+	text-align: left;
+   	margin: 0 auto;
+   	width: 60%;
+}
+
+table.clientsTable {
+	text-align: center;
+	margin: 0 auto;
+	width: 95%;
+}
+
+/* Employees */
+
+table.employeeDetails {
+	text-align: left;
+   	margin: 0 auto;
+   	width: 60%;
+}
+
+table.employeesTable {
+	text-align: center;
+	margin: 0 auto;
+	width: 95%;
+}
+
+/* Maintenance */
+
+table.clientMaintenances {
+	text-align: center;
+   	margin: 0 auto;
+   	width: 95%;
+}
+
+table.maintenanceDetails {
+	text-align: left;
+   	margin: 0 auto;
+   	width: 60%;
+}
+
+table.maintenanceTable {
+	text-align: center;
+	margin: 0 auto;
+	width: 95%;
+}
+
+/* Bills*/
+
+table.shoppingCartTable {
+	text-align: center;
+	margin: 0 auto;
+	width: 70%;
+}
+
+table.billsTable {
+	text-align: center;
+	margin: 0 auto;
+	width: 50%;
+}
+
+table.billDetailsTable {
+	margin-left: 10px;
+	margin-bottom: 10px;
+	text-align: left;
+	width: 70%;
+}
+
+table.billLinesTable {
+	margin: 0 auto;
+	width: 60%;
+}
+
+div.billTotal {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: right;
+	width: 75%;
+}
+
+/* "Previous" and "Next" links. */
+
+div.previousNextLinks {
+    margin-left: 10%;
+    width: 80%;    
+    margin-bottom: 10px;
+}
+
+div.previousNextLinks span.previousLink {
+    float: left;
+    text-align: left;
+    width: 49.5%;
+}
+
+div.previousNextLinks span.nextLink {
+    float: right;
+    text-align: right;
+    width: 49.5%;
+}
+
+/* Error messages. */
+
+.errorMessage {
+    font-weight: bold;
+    color: red;
+    margin-left: 5px;
+}
+
+/*** FOOTER ***/
+
+#footer {
+	clear: both;
+    width: 900px;
+	margin: 0 auto;
+	padding: 0;
+	background: url(../images/img07.jpg) no-repeat left top;
+	height: 61px;
+}
+
+#footer p {
+	margin: 0;
+	padding: 20px 0;
+	text-align: center;
+	line-height: normal;
+	color: #FFFFFF;
+}
+
+#footer a {
+	color: #F1B566;
+}
+

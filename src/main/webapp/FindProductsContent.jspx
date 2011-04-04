@@ -1,0 +1,53 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<h2 class="info">
+    <fmt:message key="FindProducts.title"/>
+</h2>
+
+<html:xhtml/>
+
+<html:form action="FindProducts.do" focus="identifier" method="GET">
+
+    <html:hidden property="startIndex" value="1"/>
+    <html:hidden property="count" value="10"/>
+
+    <div class="field">
+        <span class="label">
+            <fmt:message key="FindProductsContent.identifier"/>
+        </span>
+        <span class="entry">
+            <html:text property="identifier" size="16" maxlength="16"/>
+            <html:errors property="identifier"/>
+        </span>
+    </div>
+
+    <div class="field">
+        <span class="label">
+            <fmt:message key="FindProductsContent.findBy"/>
+        </span>
+        <span class="entry">
+            <html:select property="identifierType">
+                <html:option value="NAM_ID">
+                    <fmt:message key="ProductAttributes.name"/>
+                </html:option>
+                <html:option value="CAT_ID">
+                    <fmt:message key="ProductAttributes.category"/>
+                </html:option>
+            </html:select>
+            <html:errors property="identifierType"/>
+        </span>
+    </div>
+    
+    <div class="button">
+        <html:submit>
+            <fmt:message key="Buttons.find"/>
+        </html:submit>
+    </div>
+
+</html:form>
+
+</jsp:root>

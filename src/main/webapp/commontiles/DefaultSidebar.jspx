@@ -1,0 +1,343 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<span id="menuLinks">
+
+<!-- FIXME: Tomcat says that "span" can not be a child of "c:choose" (maybe a
+     bug). So, I put "span" as the root tag. -->
+<c:choose>
+    <jsp:output omit-xml-declaration="true"/>
+          
+    <c:when test="${empty sessionScope.firstName}">
+	    <h2><fmt:message key="DefaultSidebar.welcome"/></h2>
+	    <ul>
+	      	<li>
+	    		<html:link action="Welcome.do">
+	    			<fmt:message key="DefaultSidebar.home"/>
+	  			</html:link>
+	  		</li>
+	  		<li>   
+	        	<html:link action="ShowAuthentication.do">
+	            	<fmt:message key="DefaultSidebar.authenticate"/>
+	        	</html:link>
+	        </li>    	       
+	    </ul>
+	    <h2><fmt:message key="DefaultSidebar.menu"/></h2>
+	    <ul>
+	    	<li>
+				<html:link action="ShowRegisterClient.do">
+					<fmt:message key="DefaultSidebar.registerClient"/>
+			  	</html:link>
+			</li>
+	    	<li>
+				<c:url var="categoriesTreeURL" 
+					   value="CategoriesTree.do">
+          			<c:param name="identifier" 
+          					 value="1"/>
+      				</c:url>        
+      				<a href="${categoriesTreeURL}">
+      					<fmt:message key="DefaultSidebar.categories"/>
+      				</a>
+			</li>
+	    </ul>
+    </c:when>
+    <c:otherwise>
+    	<h2><fmt:message key="DefaultSidebar.hello"/>
+	    <c:out value=" ${sessionScope.firstName}"/></h2>
+	    <ul>
+	    	<li>
+	    		<html:link action="Welcome.do">
+	    			<fmt:message key="DefaultSidebar.home"/>
+	  			</html:link>
+	  		</li>
+	  		<li>
+				<html:link action="Logout.do">
+            		<fmt:message key="DefaultSidebar.logout"/>
+        		</html:link>
+			</li>
+	    </ul>
+	    <h2><fmt:message key="DefaultSidebar.menu"/></h2>
+    	<!-- SWITCH -->
+    	<c:choose>
+	    	<c:when test="${sessionScope.type == 'admin'}">
+	    		<ul>
+	    			<li>
+						<c:url var="categoriesTreeURL" 
+							   value="CategoriesTree.do">
+            			<c:param name="identifier" 
+            					 value="1"/>
+        				</c:url>        
+        				<a href="${categoriesTreeURL}">
+        					<fmt:message key="DefaultSidebar.categories"/>
+        				</a>
+					</li>
+	    			<li>
+					  	<html:link action="ViewBills.do">
+					    	<fmt:message key="DefaultSidebar.viewBills"/>
+					  	</html:link>
+					</li>	
+	    		</ul>
+	    		<h2><fmt:message key="DefaultSidebar.maintenances"/></h2>
+				<ul>
+					<li>
+						<html:link action="ShowRegisterMaintenance.do">
+						<fmt:message key="DefaultSidebar.registerMaintenance"/>
+					  	</html:link>
+					</li>
+					<li>
+					  	<html:link action="ShowAssignEmployeeToMaintenance.do">
+					    <fmt:message key="DefaultSidebar.assignEmployeeToMaintenance"/>
+					  	</html:link>
+					</li>
+					<li>
+					  	<html:link action="ShowDeleteEmployeeToMaintenance.do">
+					    <fmt:message key="DefaultSidebar.deleteEmployeeToMaintenance"/>
+					  	</html:link>
+					</li>					
+					<li>
+					  	<html:link action="ShowFindMaintenances.do">
+					    	<fmt:message key="DefaultSidebar.findMaintenances"/>
+					  	</html:link>
+					</li>
+					<li>
+					  	<html:link action="ShowRemoveMaintenance.do">
+					    <fmt:message key="DefaultSidebar.removeMaintenance"/>
+					  	</html:link>
+					</li>											
+	   			</ul>
+	   			<h2><fmt:message key="DefaultSidebar.categories"/></h2>
+				<ul>
+					<li>
+					  	<html:link action="ShowRegisterCategory.do">
+					    <fmt:message key="DefaultSidebar.registerCategory"/>
+					  	</html:link>
+					</li>
+					<li>
+					  	<html:link action="ShowFindCategories.do">
+					    	<fmt:message key="DefaultSidebar.findCategories"/>
+					  	</html:link>
+					</li>
+					<li>
+					  	<html:link action="ShowRemoveCategory.do">
+					    	<fmt:message key="DefaultSidebar.removeCategory"/>
+					  	</html:link>
+					</li>
+					<li>
+					  	<html:link action="ViewCategories.do">
+					    	<fmt:message key="DefaultSidebar.viewCategories"/>
+					  	</html:link>
+					</li>
+				</ul>
+				<h2><fmt:message key="DefaultSidebar.products"/></h2>
+				<ul>
+					<li>
+						<html:link action="ShowRegisterProduct.do">
+						<fmt:message key="DefaultSidebar.registerProduct"/>
+					  	</html:link>
+					</li>
+					<li>
+					  	<html:link action="ShowFindProducts.do">
+					    	<fmt:message key="DefaultSidebar.findProducts"/>
+					  	</html:link>
+					</li>
+					<li>
+					  	<html:link action="ShowRemoveProduct.do">
+					    	<fmt:message key="DefaultSidebar.removeProduct"/>
+					  	</html:link>
+					</li>													
+					<li>
+					  	<html:link action="ViewProducts.do">
+					    	<fmt:message key="DefaultSidebar.viewProducts"/>
+					  	</html:link>
+					</li>
+				</ul>	
+	    		<h2><fmt:message key="DefaultSidebar.clients"/></h2>
+	   			<ul>			  		
+					<li>
+						<html:link action="ShowRegisterClient.do">
+							<fmt:message key="DefaultSidebar.registerClient"/>
+					  	</html:link>
+					</li>
+					<li>
+					  	<html:link action="ShowFindClients.do">
+					    	<fmt:message key="DefaultSidebar.findClients"/>
+					  	</html:link>
+					</li>
+					<li>
+					  	<html:link action="ShowRemoveClient.do">
+					    	<fmt:message key="DefaultSidebar.removeClient"/>
+					  	</html:link>
+					</li>
+					<li>
+					  	<html:link action="ViewClients.do">
+					    	<fmt:message key="DefaultSidebar.viewClients"/>
+					  	</html:link>
+					</li>
+				</ul>
+				<h2><fmt:message key="DefaultSidebar.employees"/></h2>
+				<ul>
+					<li>
+						<html:link action="ShowRegisterEmployee.do">
+						<fmt:message key="DefaultSidebar.registerEmployee"/>
+					  	</html:link>
+					</li>
+					<li>
+					  	<html:link action="ShowFindEmployees.do">
+					    	<fmt:message key="DefaultSidebar.findEmployees"/>
+					  	</html:link>
+					</li>
+					<li>
+					  	<html:link action="ShowRemoveEmployee.do">
+					    	<fmt:message key="DefaultSidebar.removeEmployee"/>
+					  	</html:link>
+					</li>
+					<li>
+					  	<html:link action="ViewEmployees.do">
+					    	<fmt:message key="DefaultSidebar.viewEmployees"/>
+					  	</html:link>
+					</li>
+				</ul>			
+	    	</c:when>
+	    	<c:when test="${sessionScope.type == 'employee'}">	    	
+	    		<ul>
+	    			<li>
+						<c:url var="categoriesTreeURL" 
+							   value="CategoriesTree.do">
+            			<c:param name="identifier" 
+            					 value="1"/>
+        				</c:url>        
+        				<a href="${categoriesTreeURL}">
+        					<fmt:message key="DefaultSidebar.categories"/>
+        				</a>
+					</li>
+	    		</ul>
+	    		<h2><fmt:message key="DefaultSidebar.clients"/></h2>
+	   			<ul>		   	  	
+					<li>
+						<html:link action="ShowRegisterClient.do">
+							<fmt:message key="DefaultSidebar.registerClient"/>
+					  	</html:link>
+					</li>
+					<li>
+					  	<html:link action="ShowFindClients.do">
+					    	<fmt:message key="DefaultSidebar.findClients"/>
+					  	</html:link>
+					</li>
+					<li>
+					  	<html:link action="ShowRemoveClient.do">
+					    	<fmt:message key="DefaultSidebar.removeClient"/>
+					  	</html:link>
+					</li>
+					<li>
+					  	<html:link action="ViewClients.do">
+					    	<fmt:message key="DefaultSidebar.viewClients"/>
+					  	</html:link>
+					</li>
+				</ul>
+				<h2><fmt:message key="DefaultSidebar.products"/></h2>
+				<ul>
+					<li>
+						<html:link action="ShowRegisterProduct.do">
+							<fmt:message key="DefaultSidebar.registerProduct"/>
+					  	</html:link>
+					</li>					
+					<li>
+					  	<html:link action="ShowFindProducts.do">
+					    	<fmt:message key="DefaultSidebar.findProducts"/>
+					  	</html:link>
+					</li>										
+					<li>
+					  	<html:link action="ShowRemoveProduct.do">
+					    	<fmt:message key="DefaultSidebar.removeProduct"/>
+					  	</html:link>
+					</li>														
+					<li>
+					  	<html:link action="ViewProducts.do">
+					    	<fmt:message key="DefaultSidebar.viewProducts"/>
+					  	</html:link>
+					</li>
+						<li>
+					  	<html:link action="ViewCategories.do">
+					    	<fmt:message key="DefaultSidebar.viewCategories"/>
+					  	</html:link>
+					</li>									
+	   			</ul>
+	    	</c:when>
+	    	<c:otherwise>
+		    	<ul>		      
+					<li>
+						<c:url var="categoriesTreeURL" 
+							   value="CategoriesTree.do">
+            			<c:param name="identifier" 
+            					 value="1"/>
+        				</c:url>        
+        				<a href="${categoriesTreeURL}">
+        					<fmt:message key="DefaultSidebar.categories"/>
+        				</a>
+					</li>
+					<li>
+					  	<html:link action="ShowFindProducts.do">
+					    	<fmt:message key="DefaultSidebar.findProducts"/>
+					  	</html:link>
+					</li>
+					<li>
+						<c:url var="clientMaintenancesURL" 
+							   value="FindMaintenances.do">
+            			<c:param name="identifierType" value="CLI_ID"/>
+            			<c:param name="identifier" 
+            					 value="${sessionScope.NIF}"/>
+        				</c:url>        
+        				<a href="${clientMaintenancesURL}">
+        					<fmt:message key="DefaultSidebar.maintenances"/>
+        				</a>
+					</li>					
+					<li>
+					  	<html:link action="ShoppingCart.do">
+					    	<fmt:message key="DefaultSidebar.shoppingCart"/>
+					  	</html:link>
+					</li>
+					<li>
+						<c:url var="clientBillsURL" 
+							   value="FindBills.do">
+            			<c:param name="identifierType" value="NIF_ID"/>
+            			<c:param name="identifier" 
+            					 value="${sessionScope.NIF}"/>
+        				</c:url>        
+        				<a href="${clientBillsURL}">
+        					<fmt:message key="DefaultSidebar.viewBills"/>
+        				</a>        							
+					</li>			
+				</ul>
+				<h2><fmt:message key="DefaultSidebar.personal"/></h2>
+				<ul>										
+					<li>
+						<c:url var="modifyClientDetailsURL" 
+							   value="FindClients.do">
+            			<c:param name="identifierType" value="CLI_ID"/>
+            			<c:param name="identifier" 
+            					 value="${sessionScope.NIF}"/>
+        				</c:url>        
+        				<a href="${modifyClientDetailsURL}">
+        					<fmt:message key="DefaultSidebar.clientDetails"/>
+        				</a>        			
+					</li>
+					<li>
+						<c:url var="removeClientURL" value="ShowRemove.do">            
+        				</c:url>        
+        				<a href="${removeClientURL}">
+        					<fmt:message key="DefaultSidebar.remove"/>
+        				</a>        			
+					</li>							
+		    	</ul>
+		    	</c:otherwise>
+	    	
+	    </c:choose>
+    </c:otherwise>
+</c:choose>
+</span>
+
+</jsp:root>

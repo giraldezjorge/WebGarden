@@ -1,0 +1,111 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<h2 class="info">
+    <fmt:message key="ViewEmployees.title"/>
+</h2>
+
+<html:xhtml/>
+<c:choose>
+<c:when test="${empty requestScope.empleados}">
+	<p><fmt:message key="ViewEmployees.noEmployees"/></p>
+</c:when>
+<c:otherwise>	
+	<table class="employeesTable">
+	<tr>
+		<th><fmt:message key="EmployeeAttributes.firstName"/></th>
+		<th><fmt:message key="EmployeeAttributes.surname1"/></th>
+		<th><fmt:message key="EmployeeAttributes.surname2"/></th>
+		<th><fmt:message key="EmployeeAttributes.NIF"/></th>
+		<th><fmt:message key="EmployeeAttributes.dir"/></th>
+		<th><fmt:message key="EmployeeAttributes.cod_postal"/></th>
+		<th><fmt:message key="EmployeeAttributes.tlf"/></th>
+		<th><fmt:message key="EmployeeAttributes.poblacion"/></th>
+		<th><fmt:message key="EmployeeAttributes.provincia"/></th>
+		<th><fmt:message key="EmployeeAttributes.num_cuenta"/></th>
+		<th><fmt:message key="EmployeeAttributes.esAdmin"/></th>
+	</tr>
+	
+	<c:forEach var="employee" items="${requestScope.empleados}">
+		<tr>
+			<td>
+				<c:out value="${employee.pila}"></c:out>
+			</td>
+			<td>
+				<c:out value="${employee.ap1}"></c:out>
+			</td>
+			<td>
+				<c:out value="${employee.ap2}"></c:out>
+			</td>
+			<td>
+				<c:url var="employeeDetailsURL" value="FindEmployees.do">
+				<c:param name="identifierType" value="NIF_ID"/>				
+            	<c:param name="identifier" value="${employee.NIF}"/>
+        		</c:url>        
+        		<a href="${employeeDetailsURL}">${employee.NIF}</a>	
+			</td>
+			<td>
+				<c:out value="${employee.dir}"></c:out>
+			</td>
+			<td>
+				<c:out value="${employee.cod_postal}"></c:out>
+			</td>
+			<td>
+				<c:out value="${employee.tlf}"></c:out>
+			</td>
+			<td>
+				<c:out value="${employee.poblacion}"></c:out>
+			</td>
+			<td>
+				<c:out value="${employee.provincia}"></c:out>
+			</td>
+			<td>
+				<c:out value="${employee.num_cuenta}"></c:out>
+			</td>
+			<td>
+				<c:out value="${employee.esAdmin}"></c:out>
+			</td>
+		</tr>
+	</c:forEach>
+	</table>
+</c:otherwise>
+</c:choose>		
+	<!-- "Previous" and "Next" links. -->
+
+	<div class="previousNextLinks">
+	
+	<span class="previousLink">
+	
+	<c:if test="${!empty requestScope.previous}">
+	
+	    <html:link action="ViewEmployees.do" name="previous">
+	        <fmt:message key="Links.previous"/>
+	    </html:link>
+	
+	</c:if>
+	
+	</span>
+	
+	<span class="nextLink">
+	
+	<c:if test="${!empty requestScope.next}">
+	
+	    <html:link action="ViewEmployees.do" name="next">
+	        <fmt:message key="Links.next"/>
+	    </html:link>
+	
+	</c:if>
+	
+	</span>
+	
+	</div>
+	
+	<!-- 
+	<html:link action="Welcome.do"><fmt:message key="Buttons.back"/></html:link>
+	-->
+	
+</jsp:root>

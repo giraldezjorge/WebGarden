@@ -1,0 +1,51 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<h2 class="info">
+    <fmt:message key="RegisterCategory.title"/>
+</h2>
+
+
+<html:xhtml/>
+
+<!-- Print register category form -->
+
+<html:form action="RegisterCategory.do" focus="idCategoria">
+    
+    <!-- Nombre -->
+    
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="CategoryAttributes.name" />
+        </span>
+        <span class="entry">    
+            <html:text property="nombre" size="16" maxlength="16" />
+            <html:errors property="nombre" />
+        </span>
+    </div>
+    
+    <!-- Padre -->
+    
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="CategoryAttributes.father" />
+        </span>
+        <span class="entry">    
+            <html:text property="padre" size="16" maxlength="20" />
+            <html:errors property="padre" />
+        </span>
+    </div>
+        
+    <!-- Register button -->
+    
+    <div class="button">
+        <html:submit><fmt:message key="Buttons.register" /></html:submit>
+    </div>
+    
+</html:form>
+
+
+</jsp:root>

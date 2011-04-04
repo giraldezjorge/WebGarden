@@ -1,0 +1,56 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<h2 class="info">
+    <fmt:message key="ShoppingCart.title"/>
+</h2>
+
+	<html:xhtml/>
+	<c:choose>
+	<c:when test="${empty requestScope.printManager}">
+		<p><fmt:message key="ShoppingCart.noShopping"/></p>
+	</c:when>
+	<c:otherwise>
+	<table class="shoppingCartTable">
+		<tr>
+			<th><fmt:message key="BillLineAttributes.product"/></th>
+			<th><fmt:message key="BillLineAttributes.quantity"/></th>
+			<th><fmt:message key="BillLineAttributes.discount"/></th>
+			<th><fmt:message key="BillLineAttributes.total"/></th>
+		</tr>
+		
+		<c:forEach var="line" items="${requestScope.printManager}">
+			<tr>
+				<td>
+					<c:out value="${line.productName}"></c:out>
+				</td>
+				<td>
+					<c:out value="${line.cantidad}"></c:out>
+				</td>
+				<td>
+					<fmt:formatNumber value="${line.descuento}"/>
+				</td>
+				<td>
+					<fmt:formatNumber value="${line.total}"/>
+				</td>
+				<td>
+					<html:link action="DeleteBillLine.do" >
+					<fmt:message key="Buttons.delete"/>
+					<html:param name="num" value="${line.num_linea}"/>
+					</html:link>
+				</td>
+			</tr>
+			
+		</c:forEach>
+	</table>
+	<html:link action="CreateBill.do" ><fmt:message key="Buttons.bill"/>
+	</html:link>
+	
+	</c:otherwise>
+	</c:choose>
+	
+</jsp:root>

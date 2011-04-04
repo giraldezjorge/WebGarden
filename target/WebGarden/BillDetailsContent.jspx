@@ -1,0 +1,114 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<h2 class="info">
+    <fmt:message key="BillDetails.title"/>
+</h2>
+
+<table class="billDetailsTable">
+
+    <tr>
+        <th><fmt:message key="BillAttributes.id"/></th>
+        <td><c:out value="${requestScope.printManager.idFactura}"/></td>
+    </tr>
+
+    <tr>
+        <th><fmt:message key="BillAttributes.date"/></th>
+        <td><fmt:formatDate value="${requestScope.printManager.fecha}" 
+        					type="date"/></td>
+    </tr>
+
+    <tr>
+        <th><fmt:message key="BillAttributes.client"/></th>
+        <td><c:out value="${requestScope.printManager.firstName} 
+        				${requestScope.printManager.surname1}
+        				${requestScope.printManager.surname2}"/></td>
+    </tr>
+	
+	<tr>
+        <th><fmt:message key="ClientAttributes.NIF"/></th>
+        <td><c:out value="${requestScope.printManager.NIF}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="ClientAttributes.dir"/></th>
+        <td><c:out value="${requestScope.printManager.dir}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="ClientAttributes.poblacion"/></th>
+        <td><c:out value="${requestScope.printManager.poblacion}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="ClientAttributes.provincia"/></th>
+        <td><c:out value="${requestScope.printManager.provincia}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="ClientAttributes.tlf"/></th>
+        <td><c:out value="${requestScope.printManager.tlf}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="ClientAttributes.email"/></th>
+        <td><c:out value="${requestScope.printManager.email}"/></td>
+    </tr>
+	
+</table>
+<table class="billLinesTable">
+
+	
+	<tr>
+		----------------------------------------------------------------
+	</tr>	
+	<tr>
+		<th><fmt:message key="BillLineAttributes.product"/></th>
+		<th><fmt:message key="BillLineAttributes.quantity"/></th>
+		<th><fmt:message key="BillLineAttributes.discount"/></th>
+		<th><fmt:message key="BillLineAttributes.total"/></th>
+	</tr>
+	
+	<c:forEach var="line" items="${requestScope.lines}">
+		<tr>			
+			<td>
+				<c:out value="${line.productName}"></c:out>
+			</td>
+			<td>
+				<c:out value="${line.cantidad}"></c:out>
+			</td>
+			<td>
+				<fmt:formatNumber value="${line.descuento}"/>
+			</td>
+			<td>
+				<fmt:formatNumber value="${line.total}"/>
+			</td>
+		</tr>
+	</c:forEach>
+</table>
+
+<div class="billTotal">
+	TOTAL: <fmt:formatNumber value="${printManager.totalFactura}"/>
+	<fmt:message key="DefaultMoney.currentMoney"/>
+</div>
+
+<c:choose>
+<c:when test="${sessionScope.type == 'admin'}">
+
+</c:when>
+<c:otherwise>
+<c:choose>
+<c:when test="${requestScope.printManager.pagada == false}">
+<html:link action="PayBill.do" >
+	<fmt:message key="Buttons.pay"/>
+	<html:param name="id" value="${requestScope.printManager.idFactura}"/>
+</html:link>
+</c:when>
+</c:choose>
+</c:otherwise>
+</c:choose>
+</jsp:root>

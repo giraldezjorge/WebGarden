@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+	<!-- ============ Form Bean Definitions =============================== -->
+	
+	<form-beans>
+	
+		<form-bean name="loginForm"
+		type="jgiraldez.j2ee.webgarden.http.view.actionforms.LoginForm"/>
+		<form-bean name="changePasswordForm"
+	type="jgiraldez.j2ee.webgarden.http.view.actionforms.ChangePasswordForm"/>
+	    <form-bean name="registerClientForm"
+	type="jgiraldez.j2ee.webgarden.http.view.actionforms.RegisterClientForm"/>
+		<form-bean name="viewForm"
+			type="jgiraldez.j2ee.webgarden.http.view.actionforms.ViewForm"/>
+		<form-bean name="registerCategoryForm"
+	type="jgiraldez.j2ee.webgarden.http.view.actionforms.RegisterCategoryForm"/>		
+		<form-bean name="registerEmployeeForm"
+	type="jgiraldez.j2ee.webgarden.http.view.actionforms.RegisterEmployeeForm"/>		
+		<form-bean name="registerProductForm"
+	type="jgiraldez.j2ee.webgarden.http.view.actionforms.RegisterProductForm"/>
+		<form-bean name="registerMaintenanceForm"
+type="jgiraldez.j2ee.webgarden.http.view.actionforms.RegisterMaintenanceForm"/>		
+		<form-bean name="findForm"
+			type="jgiraldez.j2ee.webgarden.http.view.actionforms.FindForm" />
+		<form-bean name="employeeToMaintenanceForm"
+type="jgiraldez.j2ee.webgarden.http.view.actionforms.EmployeeToMaintenanceForm"/>
+		<form-bean name="removeForm"
+		type="jgiraldez.j2ee.webgarden.http.view.actionforms.RemoveForm" />
+		<form-bean name="editCategoryDetailsForm"
+type="jgiraldez.j2ee.webgarden.http.view.actionforms.EditCategoryDetailsForm" />
+		<form-bean name="editClientDetailsForm"
+type="jgiraldez.j2ee.webgarden.http.view.actionforms.EditClientDetailsForm" />
+		<form-bean name="editEmployeeDetailsForm"
+type="jgiraldez.j2ee.webgarden.http.view.actionforms.EditEmployeeDetailsForm" />
+		<form-bean name="editProductDetailsForm"
+type="jgiraldez.j2ee.webgarden.http.view.actionforms.EditProductDetailsForm" />
+		<form-bean name="editMaintenanceDetailsForm"
+type="jgiraldez.j2ee.webgarden.http.view.actionforms.EditMaintenanceDetailsForm"/>
+		<form-bean name="buyProductForm"
+		type="jgiraldez.j2ee.webgarden.http.view.actionforms.BuyProductForm" />	
+	</form-beans>
+	
+	
+	<!-- ============ Global Forward Definitions ========================== -->
+	
+	<global-forwards>
+	    <forward name="Welcome" path="/Welcome.do" redirect="true"/>
+	    <forward name="Success" path="/SuccessfulOperation.do" redirect="true"/>
+	    <forward name="RemoveSuccess" path="/SuccessfulOperation.do" redirect="true" />
+	    <forward name="AuthenticationPage" path="/ShowAuthentication.do" redirect="true"/>
+	    <forward name="InternalError" path="/InternalErrorContent.jspx" redirect="true"/>
+	    <forward name="Logout" path="/Logout.do" redirect="true"/>
+	</global-forwards>
+	
+	<!-- ============ Action Mapping Definitions ========================== -->
+	
+	<action-mappings 
+type="jgiraldez.j2ee.webgarden.http.controller.frontcontroller.WebGardenActionMapping">
+		
+		<action path="/Welcome"
+            	type="org.apache.struts.actions.ForwardAction"
+            	parameter=".Welcome"/>
+        
+        <action path="/About"
+            	type="org.apache.struts.actions.ForwardAction"
+            	parameter=".About"/>
+            	
+        <action path="/Contact"
+            	type="org.apache.struts.actions.ForwardAction"
+            	parameter=".Contact"/>
+        
+        <action path="/ChangeLocale"
+	  type="jgiraldez.j2ee.webgarden.http.controller.actions.ChangeLocaleAction"	    		
+	    		scope="request">
+	    		<forward name="Welcome" path=".Welcome"/>	    	
+	    </action>
+            	
+        <action path="/SuccessfulOperation"
+            	type="org.apache.struts.actions.ForwardAction"
+            	parameter=".SuccessfulOperation"/>
+            	
+        <action path="/ShowAuthentication"
+            	type="org.apache.struts.actions.ForwardAction"
+            	parameter=".Authentication"/>
+        
+        <action path="/ShowChangePassword"
+            	type="org.apache.struts.actions.ForwardAction"
+            	parameter=".ChangePassword">
+        		<set-property property="authenticationRequired" value="true"/>
+    	</action>
+            	
+        <action path="/ShowRegisterClient"
+            	type="org.apache.struts.actions.ForwardAction"
+            	parameter=".RegisterClient"/>
+	    
+	    <action path="/ShowRegisterEmployee"
+	    		type="org.apache.struts.actions.ForwardAction"
+	    		parameter=".RegisterEmployee">
+	    		<set-property property="authenticationRequired" value="true"/>
+	    		<set-property property="administrationRequired" value="true"/>
+	    </action>        
+	            
+	    <action path="/ShowRegisterCategory"
+	    		type="org.apache.struts.actions.ForwardAction"
+	    		parameter=".RegisterCategory">
+	    		<set-property property="authenticationRequired" value="true"/>
+	    		<set-property property="administrationRequired" value="true"/>
+	    </action>
+	    
+	    <action path="/ShowRegisterProduct"
+	    		type="org.apache.struts.actions.ForwardAction"
+	    		parameter=".RegisterProduct">
+	    		<set-property property="authenticationRequired" value="true"/>
+	    		<set-property property="employeeRequired" value="true"/>
+	    </action>
+            	
+        <action path="/ShowRegisterMaintenance"
+	    		type="org.apache.struts.actions.ForwardAction"
+	    		parameter=".RegisterMaintenance">
+	    		<set-property property="authenticationRequired" value="true"/>
+	    		<set-property property="administrationRequired" value="true"/>
+	    </action>
+        
+        <action path="/ShowFindClients"
+            	type="org.apache.struts.actions.ForwardAction"
+            	parameter=".FindClients">
+            	<set-property property="authenticationRequired" value="true"/>
+        </action>
+        
+        <action path="/ShowFindEmployees"
+            	type="org.apache.struts.actions.ForwardAction"
+            	parameter=".FindEmployees">
+            	<set-property property="authenticationRequired" value="true"/>
+            	<set-property property="administrationRequired" value="true"/>
+        </action>
+        
+        <action path="/ShowFindCategories"
+            	type="org.apache.struts.actions.ForwardAction"
+            	parameter=".FindCategories">
+            	<set-property property="authenticationRequired" value="true"/>
+            	<set-property property="administrationRequired" value="true"/>
+        </action>        
+            	
+        <action path="/ShowFindProducts"
+            	type="org.apache.struts.actions.ForwardAction"
+            	parameter=".FindProducts">
+            	<set-property property="authenticationRequired" value="true"/>            	
+        </action>
+        
+        <action path="/ShowFindMaintenances"
+            	type="org.apache.struts.actions.ForwardAction"
+            	parameter=".FindMaintenances">
+            	<set-property property="authenticationRequired" value="true"/>
+            	<set-property property="administrationRequired" value="true"/>
+        </action>
+        
+        <action path="/ShowAssignEmployeeToMaintenance"
+        		type="org.apache.struts.actions.ForwardAction"
+        		parameter=".AssignEmployeeToMaintenance">
+        		<set-property property="authenticationRequired" value="true"/>
+        		<set-property property="administrationRequired" value="true"/>
+        </action>
+        
+        <action path="/ShowDeleteEmployeeToMaintenance"
+        		type="org.apache.struts.actions.ForwardAction"
+        		parameter=".DeleteEmployeeToMaintenance">
+        		<set-property property="authenticationRequired" value="true"/>
+        		<set-property property="administrationRequired" value="true"/>
+        </action>
+        
+        <action path="/ShowRemoveMaintenance"
+        		type="org.apache.struts.actions.ForwardAction"
+        		parameter=".RemoveMaintenance">
+        		<set-property property="authenticationRequired" value="true"/>
+        		<set-property property="administrationRequired" value="true"/>
+        </action>
+        
+        <action path="/ShowRemoveCategory"
+        		type="org.apache.struts.actions.ForwardAction"
+        		parameter=".RemoveCategory">
+        		<set-property property="authenticationRequired" value="true"/>
+        		<set-property property="administrationRequired" value="true"/>
+        </action>
+        		
+        <action path="/ShowRemoveProduct"
+        		type="org.apache.struts.actions.ForwardAction"
+        		parameter=".RemoveProduct">
+        		<set-property property="authenticationRequired" value="true"/>
+        		<set-property property="employeeRequired" value="true"/>
+        </action>		
+        
+        <action path="/ShowRemoveClient"
+        		type="org.apache.struts.actions.ForwardAction"
+        		parameter=".RemoveClient">
+        		<set-property property="authenticationRequired" value="true"/>
+        </action>
+        
+        <action path="/ShowRemoveEmployee"
+        		type="org.apache.struts.actions.ForwardAction"
+        		parameter=".RemoveEmployee">
+        		<set-property property="authenticationRequired" value="true"/>
+        		<set-property property="administrationRequired" value="true"/>
+        </action>
+        
+        <action path="/ShowUpdateCategory"
+        		type="org.apache.struts.actions.ForwardAction"
+        		parameter=".UpdateCategory">
+        		<set-property property="authenticationRequired" value="true"/>
+        		<set-property property="administrationRequired" value="true"/>
+        </action>
+        
+        <action path="/ShowRemove"
+        		type="org.apache.struts.actions.ForwardAction"
+        		parameter=".Remove">
+        		<set-property property="authenticationRequired" value="true"/>
+        </action>
+        
+        <action path="/Login"
+		type="jgiraldez.j2ee.webgarden.http.controller.actions.LoginAction"
+            	name="loginForm"
+            	scope="request"
+            	input=".Authentication"
+            	validate="true"/>
+            	
+        <action path="/Logout"
+		type="jgiraldez.j2ee.webgarden.http.controller.actions.LogoutAction">
+				<set-property property="authenticationRequired" value="true"/>
+		</action>
+		
+		<action path="/ChangePassword"
+	type="jgiraldez.j2ee.webgarden.http.controller.actions.ChangePasswordAction"
+            	name="changePasswordForm"
+            	scope="request"
+            	input=".ChangePassword"
+            	validate="true">
+        		<set-property property="authenticationRequired" value="true"/>
+    	</action>
+	    
+	    <action path="/RegisterClient"
+	type="jgiraldez.j2ee.webgarden.http.controller.actions.RegisterClientAction"
+	            name="registerClientForm"
+	            scope="request"
+	            input=".RegisterClient"
+	            validate="true"/>
+	            
+	    <action path="/RegisterEmployee"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.RegisterEmployeeAction"
+	    		name="registerEmployeeForm"
+	    		scope="request"
+	    		input=".RegisterEmployee"
+	    		validate="true">
+	    		<set-property property="authenticationRequired" value="true"/>
+	    		<set-property property="administrationRequired" value="true"/>
+	    </action>
+	            
+	    <action path="/RegisterCategory"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.RegisterCategoryAction"
+	    		name="registerCategoryForm"
+	    		scope="request"
+	    		input=".RegisterCategory"
+	    		validate="true">
+	    		<set-property property="authenticationRequired" value="true"/>
+	    		<set-property property="administrationRequired" value="true"/>
+	    </action>
+	    		
+	    <action path="/RegisterProduct"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.RegisterProductAction"
+	    		name="registerProductForm"
+	    		scope="request"
+	    		input=".RegisterProduct"
+	    		validate="true">
+	    		<set-property property="authenticationRequired" value="true"/>
+	    		<set-property property="employeeRequired" value="true"/>
+	    </action>
+	    
+	    <action path="/RegisterMaintenance"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.RegisterMaintenanceAction"
+	    		name="registerMaintenanceForm"
+	    		scope="request"
+	    		input=".RegisterMaintenance"
+	    		validate="true">
+	    		<set-property property="authenticationRequired" value="true"/>
+	    		<set-property property="administrationRequired" value="true"/>
+	    </action>
+	            
+	    <action path="/ViewClients"
+	 type="jgiraldez.j2ee.webgarden.http.controller.actions.ViewClientsAction"
+	    		name="viewForm"
+	    		scope="request"
+	    		input=".InternalError"
+	    		validate="true">
+	    		<set-property property="authenticationRequired" value="true"/>
+	    		<set-property property="employeeRequired" value="true"/>
+	    		<forward name="ViewClients" path=".ViewClients"/>
+	   	</action>
+	   	
+	   	<action path="/ViewCategories"
+	type="jgiraldez.j2ee.webgarden.http.controller.actions.ViewCategoriesAction"
+	    		name="viewForm"
+	    		scope="request"
+	    		input=".InternalError"
+	    		validate="true">
+	    		<set-property property="authenticationRequired" value="true"/>
+	    		<set-property property="employeeRequired" value="true"/>
+	    		<forward name="ViewCategories" path=".ViewCategories"/>
+	   	</action>
+	   	
+	   	<action path="/ViewEmployees"
+	 type="jgiraldez.j2ee.webgarden.http.controller.actions.ViewEmployeesAction"
+	    		name="viewForm"
+	    		scope="request"
+	    		input=".InternalError"
+	    		validate="true">
+	    		<set-property property="authenticationRequired" value="true"/>
+	    		<set-property property="administrationRequired" value="true"/>
+	    		<forward name="ViewEmployees" path=".ViewEmployees"/>
+	   	</action>
+	   	
+	   	<action path="/ViewProducts"
+	  type="jgiraldez.j2ee.webgarden.http.controller.actions.ViewProductsAction"
+	    		name="viewForm"
+	    		scope="request"
+	    		input=".InternalError"
+	    		validate="true">
+	    		<set-property property="authenticationRequired" value="true"/>
+	    		<forward name="ViewProducts" path=".ViewProducts"/>
+	   	</action>
+	   	
+	   	<action path="/FindClients"
+	type="jgiraldez.j2ee.webgarden.http.controller.actions.FindClientsAction"
+            	name="findForm"
+            	scope="request"
+            	input=".FindClients"
+            	validate="true">
+				<set-property property="authenticationRequired" value="true"/>
+        		<forward name="FindClientByNIFSuccess" 
+                 		path=".ClientDetails"/>
+                <forward name="FindClientByNameSuccess" 
+                 		path=".ViewClients"/>
+        </action>
+	   	
+	   	<action path="/FindEmployees"
+	type="jgiraldez.j2ee.webgarden.http.controller.actions.FindEmployeesAction"
+            	name="findForm"
+            	scope="request"
+            	input=".FindEmployees"
+            	validate="true">
+				<set-property property="authenticationRequired" value="true"/>
+				<set-property property="administrationRequired" value="true"/>
+        		<forward name="FindEmployeeByNIFSuccess" 
+                 		path=".EmployeeDetails"/>                
+        </action>
+	   	
+	   	<action path="/FindCategories"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.FindCategoriesAction"
+            	name="findForm"
+            	scope="request"
+            	input=".FindCategories"
+            	validate="true">
+				<set-property property="authenticationRequired" value="true"/>				
+        		<forward name="FindCategoryByCategoryIdentifierSuccess" 
+                 		path=".CategoryDetails"/>
+        		<forward name="FindCategoriesByFatherIdentifierSuccess" 
+                 		path=".CategoriesTreeDetails"/>
+        </action>
+        
+        <action path="/FindProducts"
+	type="jgiraldez.j2ee.webgarden.http.controller.actions.FindProductsAction"
+            	name="findForm"
+            	scope="request"
+            	input=".FindProducts"
+            	validate="false">
+				<set-property property="authenticationRequired" value="true"/>
+        		<forward name="FindProductByNameSuccess" 
+                 		path=".ProductDetails"/>
+        		<forward name="FindProductsByCategoryNameSuccess" 
+                 		path=".CategoryProducts"/>
+        </action>
+        
+        <action path="/FindMaintenances"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.FindMaintenancesAction"
+            	name="findForm"
+            	scope="request"
+            	input=".FindMaintenances"
+            	validate="true">
+				<set-property property="authenticationRequired" value="true"/>
+        		<forward name="FindMaintenanceByMaintenanceIdentifierSuccess" 
+                 		path=".MaintenanceDetails"/>
+        		<forward name="FindMaintenancesByClientIdentifierSuccess" 
+                 		path=".ClientMaintenances"/>
+        </action>
+        
+        <action path="/FindBills"
+	type="jgiraldez.j2ee.webgarden.http.controller.actions.FindBillsAction"
+            	name="findForm"
+            	scope="request"
+            	input=".FindBills"
+            	validate="true">
+				<set-property property="authenticationRequired" value="true"/>
+        		<forward name="FindBillByBillIdentifierSuccess" 
+                 		path=".BillDetails"/>
+        		<forward name="FindBillsByClientSuccess" 
+                 		path=".ClientBills"/>
+        </action>
+        
+        <action path="/AssignEmployeeToMaintenance"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.AssignEmployeeToMaintenanceAction"
+            	name="employeeToMaintenanceForm"
+            	scope="request"
+            	input=".AssignEmployeeToMaintenance"
+            	validate="true">
+				<set-property property="authenticationRequired" value="true"/>
+				<set-property property="administrationRequired" value="true"/>
+        </action>
+        
+        <action path="/DeleteEmployeeToMaintenance"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.DeleteEmployeeToMaintenanceAction"
+            	name="employeeToMaintenanceForm"
+            	scope="request"
+            	input=".DeleteEmployeeToMaintenance"
+            	validate="true">
+				<set-property property="authenticationRequired" value="true"/>
+				<set-property property="administrationRequired" value="true"/>
+        </action>
+	    
+	    <action path="/RemoveMaintenance"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.RemoveMaintenanceAction"
+            	name="removeForm"
+            	scope="request"
+            	input=".RemoveMaintenance"
+            	validate="true">
+				<set-property property="authenticationRequired" value="true"/>
+				<set-property property="administrationRequired" value="true"/>
+        </action>
+	    
+	    <action path="/RemoveCategory"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.RemoveCategoryAction"
+            	name="removeForm"
+            	scope="request"
+            	input=".RemoveCategory"
+            	validate="true">
+				<set-property property="authenticationRequired" value="true"/>
+				<set-property property="administrationRequired" value="true"/>
+        </action>
+	    
+	    <action path="/RemoveProduct"
+	type="jgiraldez.j2ee.webgarden.http.controller.actions.RemoveProductAction"
+            	name="removeForm"
+            	scope="request"
+            	input=".RemoveProduct"
+            	validate="true">
+				<set-property property="authenticationRequired" value="true"/>
+				<set-property property="employeeRequired" value="true"/>
+        </action>
+        
+        <action path="/RemoveClient"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.RemoveClientAction"
+            	name="removeForm"
+            	scope="request"
+            	input=".RemoveClient"
+            	validate="true">
+				<set-property property="authenticationRequired" value="true"/>
+				<forward name="ViewClientsToRemove"
+						path=".ViewClientsToRemove"/>
+        </action>
+        
+        <action path="/RemoveEmployee"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.RemoveEmployeeAction"
+            	name="removeForm"
+            	scope="request"
+            	input=".RemoveEmployee"
+            	validate="true">
+				<set-property property="authenticationRequired" value="true"/>
+				<set-property property="administrationRequired" value="true"/>
+        </action>
+        
+        <action path="/ModifyCategoryDetails"
+            	type="org.apache.struts.actions.ForwardAction"
+            	parameter="/EditCategoryDetails.do">
+        		<set-property property="authenticationRequired" value="true"/>
+        		<set-property property="administrationRequired" value="true"/>
+    	</action>
+	    
+	    <action path="/EditCategoryDetails"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.EditCategoryDetailsAction"
+        		name="editCategoryDetailsForm"
+        		scope="request"
+        		validate="false">
+        		<set-property property="authenticationRequired" value="true"/>
+        		<set-property property="administrationRequired" value="true"/>
+        		<forward name="UpdateCategoryDetailsForm"
+        				path=".UpdateCategoryDetails" />
+	    </action>
+	    
+	    <action path="/UpdateCategoryDetails"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.UpdateCategoryDetailsAction"
+            	name="editCategoryDetailsForm"
+            	scope="request"
+            	input="/EditCategoryDetails.do"
+            	validate="true">
+				<set-property property="authenticationRequired" value="true"/>
+				<set-property property="administrationRequired" value="true"/>
+        </action>
+	    		
+	    <action path="/ModifyProductDetails"
+            	type="org.apache.struts.actions.ForwardAction"
+            	parameter="/EditProductDetails.do">
+        		<set-property property="authenticationRequired" value="true"/>
+        		<set-property property="employeeRequired" value="true"/>
+    	</action>
+	    
+	    <action path="/EditProductDetails"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.EditProductDetailsAction"
+        		name="editProductDetailsForm"
+        		scope="request"
+        		validate="false">
+        		<set-property property="authenticationRequired" value="true"/>
+        		<set-property property="employeeRequired" value="true"/>
+        		<forward name="UpdateProductDetailsForm"
+        				path=".UpdateProductDetails" />
+	    </action>
+	    
+	    <action path="/UpdateProductDetails"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.UpdateProductDetailsAction"
+            	name="editProductDetailsForm"
+            	scope="request"
+            	input="/EditProductDetails.do"
+            	validate="true">
+				<set-property property="authenticationRequired" value="true"/>
+				<set-property property="employeeRequired" value="true"/>
+        </action>
+	    
+	    <action path="/ModifyClientDetails"
+            	type="org.apache.struts.actions.ForwardAction"
+            	parameter="/EditClientDetails.do">
+        		<set-property property="authenticationRequired" value="true"/>
+    	</action>
+	    
+	    <action path="/EditClientDetails"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.EditClientDetailsAction"
+        		name="editClientDetailsForm"
+        		scope="request"
+        		validate="false">
+        		<set-property property="authenticationRequired" value="true"/>
+        		<forward name="UpdateClientDetailsForm"
+        				path=".UpdateClientDetails" />
+	    </action>
+	    
+	    <action path="/UpdateClientDetails"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.UpdateClientDetailsAction"
+            	name="editClientDetailsForm"
+            	scope="request"
+            	input="/EditClientDetails.do"
+            	validate="true">
+				<set-property property="authenticationRequired" value="true"/>
+        </action>
+        
+        <action path="/ModifyEmployeeDetails"
+            	type="org.apache.struts.actions.ForwardAction"
+            	parameter="/EditEmployeeDetails.do">
+        		<set-property property="authenticationRequired" value="true"/>
+        		<set-property property="administrationRequired" value="true"/>
+    	</action>
+	    
+	    <action path="/EditEmployeeDetails"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.EditEmployeeDetailsAction"
+        		name="editEmployeeDetailsForm"
+        		scope="request"
+        		validate="false">
+        		<set-property property="authenticationRequired" value="true"/>
+        		<set-property property="administrationRequired" value="true"/>
+        		<forward name="UpdateEmployeeDetailsForm"
+        				path=".UpdateEmployeeDetails" />
+	    </action>
+	    
+	    <action path="/UpdateEmployeeDetails"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.UpdateEmployeeDetailsAction"
+            	name="editEmployeeDetailsForm"
+            	scope="request"
+            	input="/EditEmployeeDetails.do"
+            	validate="true">
+				<set-property property="authenticationRequired" value="true"/>
+				<set-property property="administrationRequired" value="true"/>
+        </action>
+        
+        <action path="/ModifyMaintenanceDetails"
+            	type="org.apache.struts.actions.ForwardAction"
+            	parameter="/EditMaintenanceDetails.do">
+        		<set-property property="authenticationRequired" value="true"/>
+        		<set-property property="administrationRequired" value="true"/>
+    	</action>
+	    
+	    <action path="/EditMaintenanceDetails"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.EditMaintenanceDetailsAction"
+        		name="editMaintenanceDetailsForm"
+        		scope="request"
+        		validate="false">
+        		<set-property property="authenticationRequired" value="true"/>
+        		<set-property property="administrationRequired" value="true"/>
+        		<forward name="UpdateMaintenanceDetailsForm"
+        				path=".UpdateMaintenanceDetails" />
+	    </action>
+	    
+	    <action path="/UpdateMaintenanceDetails"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.UpdateMaintenanceDetailsAction"
+            	name="editMaintenanceDetailsForm"
+            	scope="request"
+            	input="/EditMaintenanceDetails.do"
+            	validate="true">
+				<set-property property="authenticationRequired" value="true"/>
+				<set-property property="administrationRequired" value="true"/>
+        </action>
+        
+        <action path="/BuyProduct"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.BuyProductAction"
+            	name="buyProductForm"
+            	scope="request"
+            	input=".InternalError"
+            	validate="true">
+				<set-property property="authenticationRequired" value="true"/>
+				<forward name="AddToShoppingCartSuccess" path=".BuyProduct"/>
+        </action>
+        
+        <action path="/ShoppingCart"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.ShoppingCartAction"
+        		scope="request"
+        		input="Welcome">
+        		<set-property property="authenticationRequired" value="true"/>
+        		<forward name="ShoppingCart"
+        				path=".ShoppingCart" />
+        </action>
+        
+        <action path="/DeleteBillLine"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.DeleteBillLineAction"
+        		scope="request"
+        		input="Welcome">
+        		<set-property property="authenticationRequired" value="true"/>
+        		<forward name="ShoppingCart"
+        				path=".ShoppingCart" />
+        </action>
+	    
+	    <action path="/CreateBill"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.CreateBillAction"
+        		scope="request"
+        		input="Welcome">
+        		<set-property property="authenticationRequired" value="true"/>        		
+        </action>
+        
+        <action path="/ViewBills"
+      type="jgiraldez.j2ee.webgarden.http.controller.actions.ViewBillsAction"
+        		name="viewForm"
+        		scope="request"
+        		input=".InternalError"
+        		validate="true">
+        		<set-property property="authenticationRequired" value="true"/>        	
+	    		<forward name="ViewBills" path=".ViewBills"/>
+        </action>	  
+	   	
+	   	<action path="/PayBill"
+	  type="jgiraldez.j2ee.webgarden.http.controller.actions.PayBillAction"
+	   			scope="request"
+	   			input=".InternalError"
+	   			validate="true">
+	   			<set-property property="authenticationRequired" value="true"/>	 
+	   	</action>
+	    
+	    <action path="/CategoriesTree"
+type="jgiraldez.j2ee.webgarden.http.controller.actions.CategoriesTreeAction"            
+            	scope="request"
+            	input=".InternalError"
+            	validate="true">				
+        		<forward name="FindCategoryProductsAndSonsSuccess" 
+                 		path=".CategoriesTreeDetails"/>
+        </action>
+	    
+   <!-- ===================================================================
+        The standard administrative actions available with Struts. These must 
+        be either omitted or protected by security in a real application 
+        deployment. 
+        =================================================================== -->
+	<!--
+	    <action path="/admin/addFormBean"
+	            type="org.apache.struts.actions.AddFormBeanAction"/>
+	    <action path="/admin/addForward"
+	            type="org.apache.struts.actions.AddForwardAction"/>
+	    <action path="/admin/addMapping"
+	            type="org.apache.struts.actions.AddMappingAction"/>
+	    <action path="/admin/reload"
+	            type="org.apache.struts.actions.ReloadAction"/>
+	    <action path="/admin/removeFormBean"
+	            type="org.apache.struts.actions.RemoveFormBeanAction"/>
+	    <action path="/admin/removeForward"
+	            type="org.apache.struts.actions.RemoveForwardAction"/>
+	    <action path="/admin/removeMapping"
+	            type="org.apache.struts.actions.RemoveMappingAction"/>
+	 -->
+	</action-mappings>
+	
+<!-- ===================== Request Processor  =========================== -->
+	
+	<controller processorClass="jgiraldez.j2ee.webgarden.http.controller.frontcontroller.WebGardenRequestProcessor"/>
+	
+<!-- ========== Message Resources Definitions =========================== -->
+	
+	<message-resources parameter="jgiraldez.j2ee.webgarden.http.view.messages.Messages"/>
+	  
+<!-- =========================== Tiles Plugin =========================== -->
+	  
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config"
+					value="/WEB-INF/Struts/tiles-defs.xml"/>
+	</plug-in>
+	
+<!-- ======================= WebGarden Plugin ============================ -->
+	
+	<plug-in className="jgiraldez.j2ee.webgarden.http.controller.plugin.WebGardenPlugIn"/>
+   
+</struts-config>
+

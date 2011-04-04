@@ -1,0 +1,90 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<h2 class="info">
+    <fmt:message key="ClientDetails.title"/>
+</h2>
+
+<c:choose>
+<c:when test="${sessionScope.type == 'client'}">
+<p>
+    <html:link action="ShowChangePassword.do">
+        <fmt:message key="UpdateClientDetailsContent.changePassword"/>        
+    </html:link>
+</p>
+</c:when>
+</c:choose>
+
+<table class="clientDetails">
+
+    <tr>
+        <th><fmt:message key="ClientAttributes.firstName"/></th>
+        <td><c:out value="${requestScope.client.pila}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="ClientAttributes.surname1"/></th>
+        <td><c:out value="${requestScope.client.ap1}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="ClientAttributes.surname2"/></th>
+        <td><c:out value="${requestScope.client.ap2}"/></td>
+    </tr>
+    
+    <tr>
+    	<th><fmt:message key="ClientAttributes.NIF"/></th>
+    	<td><c:out value="${requestScope.client.NIF}" /></td>
+    </tr>
+    
+    <tr>
+    	<th><fmt:message key="ClientAttributes.email"/></th>
+    	<td><c:out value="${requestScope.client.email}" /></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="ClientAttributes.dir"/></th>
+        <td><c:out value="${requestScope.client.dir}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="ClientAttributes.cod_postal"/></th>
+        <td><c:out value="${requestScope.client.cod_postal}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="ClientAttributes.tlf"/></th>
+        <td><c:out value="${requestScope.client.tlf}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="ClientAttributes.poblacion"/></th>
+        <td><c:out value="${requestScope.client.poblacion}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="ClientAttributes.provincia"/></th>
+        <td><c:out value="${requestScope.client.provincia}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="ClientAttributes.dir_facturacion"/></th>
+        <td><c:out value="${requestScope.client.dir_facturacion}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="ClientAttributes.VIP"/></th>
+        <td><c:out value="${requestScope.client.VIP}"/></td>
+    </tr>
+
+</table>
+
+<html:link action="ModifyClientDetails.do" ><fmt:message key="Buttons.modify"/>
+	<html:param name="id" value="${requestScope.client.NIF}"/>
+</html:link>
+
+</jsp:root>

@@ -1,0 +1,75 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<h2 class="info">
+    <fmt:message key="UpdateProductDetails.title"/>
+</h2>
+
+<html:xhtml/>
+
+<html:form action="UpdateProductDetails.do" focus="nombre">
+        
+    <html:hidden property="idProducto" />    
+        
+    <!-- Nombre -->
+    
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="ProductAttributes.name" />
+        </span>
+        <span class="entry">    
+            <html:text property="nombre" size="16" maxlength="16" />
+            <html:errors property="nombre" />
+        </span>
+    </div>
+    
+    <!-- Descripcion -->
+    
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="ProductAttributes.description" />
+        </span>
+        <span class="entry">    
+            <html:textarea property="descripcion" />
+            <html:errors property="descripcion" />
+        </span>
+    </div>
+    
+    <!-- Precio -->
+    
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="ProductAttributes.price" />
+        </span>
+        <span class="entry">    
+            <html:text property="precio" size="16" maxlength="16" />
+            <html:errors property="precio" />
+        </span>
+    </div>
+    
+    <!-- Categoria -->
+    
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="ProductAttributes.category" />
+        </span>
+        <span class="entry">    
+            <html:text property="categoria" size="16" maxlength="16" />
+            <html:errors property="categoria" />
+        </span>
+    </div>
+        
+    <!-- Modify button -->
+    
+    <div class="button">
+        <html:submit><fmt:message key="Buttons.modify" /></html:submit>
+    </div>
+    
+</html:form>
+
+
+</jsp:root>

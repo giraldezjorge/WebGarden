@@ -1,0 +1,91 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<h2 class="info">
+    <fmt:message key="ViewClientsToRemove.title"/>
+</h2>
+
+	<html:xhtml/>
+	
+	<table class="clientsTable">
+	<tr>
+		<th><fmt:message key="ClientAttributes.firstName"/></th>
+		<th><fmt:message key="ClientAttributes.surname1"/></th>
+		<th><fmt:message key="ClientAttributes.surname2"/></th>
+		<th><fmt:message key="ClientAttributes.NIF"/></th>
+		<th><fmt:message key="ClientAttributes.dir"/></th>
+		<th><fmt:message key="ClientAttributes.poblacion"/></th>
+		<th><fmt:message key="ClientAttributes.provincia"/></th>
+	</tr>
+	
+	<c:forEach var="client" items="${requestScope.clientes}">
+		<tr>
+			<td>
+				<c:url var="removeClientURL" value="RemoveClient.do">
+            		<c:param name="identifierType" value="NIF_ID"/>
+            		<c:param name="identifier" value="${client.NIF}"/>
+        		</c:url>        
+        		<a href="${removeClientURL}">${client.pila}</a>
+			</td>
+			<td>
+				<c:out value="${client.ap1}"></c:out>
+			</td>
+			<td>
+				<c:out value="${client.ap2}"></c:out>
+			</td>
+			<td>
+				<c:url var="removeClientURL" value="RemoveClient.do">
+					<c:param name="identifierType" value="NIF_ID"/>
+            		<c:param name="identifier" value="${client.NIF}"/>
+        		</c:url>        
+        		<a href="${removeClientURL}">${client.NIF}</a>
+			</td>
+			<td>
+				<c:out value="${client.dir}"></c:out>
+			</td>
+			<td>
+				<c:out value="${client.poblacion}"></c:out>
+			</td>
+			<td>
+				<c:out value="${client.provincia}"></c:out>
+			</td>
+		</tr>
+		
+	</c:forEach>
+	</table>
+	
+	<!-- "Previous" and "Next" links. -->
+
+	<div class="previousNextLinks">
+	
+	<span class="previousLink">
+	
+	<c:if test="${!empty requestScope.previous}">
+	
+	    <html:link action="ViewClients.do" name="previous">
+	        <fmt:message key="Links.previous"/>
+	    </html:link>
+	
+	</c:if>
+	
+	</span>
+	
+	<span class="nextLink">
+	
+	<c:if test="${!empty requestScope.next}">
+	
+	    <html:link action="ViewClients.do" name="next">
+	        <fmt:message key="Links.next"/>
+	    </html:link>
+	
+	</c:if>
+	
+	</span>
+	
+	</div>
+	
+</jsp:root>

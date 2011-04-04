@@ -1,0 +1,9 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          version="2.0">
+
+<p><fmt:message key="DefaultFooter.softwareBy"/> Jorge Giraldez Gonzalez 
+(<a href="mailto:jorbaiona9@gmail.com">jorbaiona9@gmail.com</a>)</p>
+
+</jsp:root>

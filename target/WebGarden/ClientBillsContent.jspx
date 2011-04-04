@@ -1,0 +1,92 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<h2 class="info">
+    <fmt:message key="ClientBills.title"/>
+</h2>
+
+	<html:xhtml/>
+	<c:choose>
+	<c:when test="${empty requestScope.bills}">
+		<p><fmt:message key="ClientBillsContent.noBills"/></p>
+	</c:when>
+	<c:otherwise>
+	<table class="billsTable">
+		<tr>
+			<th><fmt:message key="BillAttributes.id"/></th>
+			<th><fmt:message key="BillAttributes.date"/></th>
+			<th><fmt:message key="BillAttributes.paid"/></th>
+			<th><fmt:message key="BillAttributes.client"/></th>
+		</tr>
+		
+		<c:forEach var="bill" items="${requestScope.bills}">
+			<tr>
+				<td>
+					<c:url var="billDetailsURL" value="FindBills.do">
+					<c:param name="identifierType" value="BIL_ID"/>
+	            	<c:param name="identifier" value="${bill.idFactura}"/>
+	        		</c:url>        
+	        		<a href="${billDetailsURL}">${bill.idFactura}</a>
+				</td>
+				<td>
+					<fmt:formatDate value="${bill.fecha}" type="date"/>
+				</td>
+				<td>
+					<c:out value="${bill.pagada}"></c:out>
+				</td>
+				<td>
+					<c:out value="${bill.cliente}"></c:out>
+				</td>
+				
+				<c:choose>
+				<c:when test="${bill.pagada == false}">
+				<td>
+					<html:link action="PayBill.do" >
+						<fmt:message key="Buttons.pay"/>
+						<html:param name="id" value="${bill.idFactura}"/>
+					</html:link>
+				</td>
+				</c:when>
+				</c:choose>
+				
+			</tr>
+		</c:forEach>
+	</table>
+	</c:otherwise>
+	</c:choose>
+	
+	<!-- "Previous" and "Next" links. -->
+
+	<div class="previousNextLinks">
+	
+	<span class="previousLink">
+	
+	<c:if test="${!empty requestScope.previous}">
+	
+	    <html:link action="ViewBills.do" name="previous">
+	        <fmt:message key="Links.previous"/>
+	    </html:link>
+	
+	</c:if>
+	
+	</span>
+	
+	<span class="nextLink">
+	
+	<c:if test="${!empty requestScope.next}">
+	
+	    <html:link action="ViewBills.do" name="next">
+	        <fmt:message key="Links.next"/>
+	    </html:link>
+	
+	</c:if>
+	
+	</span>
+	
+	</div>
+	
+</jsp:root>

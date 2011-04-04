@@ -1,0 +1,182 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<h2 class="info">
+    <fmt:message key="RegisterEmployee.title"/>
+</h2>
+
+<html:xhtml/>
+
+<!-- Print register employee form -->
+
+<html:form action="RegisterEmployee.do" focus="NIF">
+        
+    <!-- Login name -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="EmployeeAttributes.NIF" />
+        </span>
+        <span class="entry">    
+            <html:text property="NIF" size="16" maxlength="16" />
+            <html:errors property="NIF" />
+        </span>
+    </div>
+    
+    <!-- Password -->
+    
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="EmployeeAttributes.pass" />
+        </span>
+        <span class="entry">    
+            <html:password property="password" size="16" maxlength="16" />
+            <html:errors property="password" />
+        </span>
+    </div>
+    
+    <!-- retypePassword -->
+    
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="EmployeeAttributes.retypePass" />
+        </span>
+        <span class="entry">    
+            <html:password property="retypePassword" size="16" maxlength="16" />
+            <html:errors property="retypePassword" />
+        </span>
+    </div>
+    
+    <!-- FirstName -->
+    
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="EmployeeAttributes.firstName" />
+        </span>
+        <span class="entry">    
+            <html:text property="firstName" size="16" maxlength="20" />
+            <html:errors property="firstName" />
+        </span>
+    </div>
+    
+    <!-- Surname1 -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="EmployeeAttributes.surname1" />
+        </span>
+        <span class="entry">    
+            <html:text property="surname1" size="16" maxlength="20" />
+            <html:errors property="surname1" />
+        </span>
+    </div>
+
+    <!-- Surname2 -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="EmployeeAttributes.surname2" />
+        </span>
+        <span class="entry">    
+            <html:text property="surname2" size="16" maxlength="20" />
+            <html:errors property="surname2" />
+        </span>
+    </div>
+    
+    <!-- Dir -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="EmployeeAttributes.dir" />
+        </span>
+        <span class="entry">    
+            <html:text property="dir" size="16" maxlength="50" />
+            <html:errors property="dir" />
+        </span>
+    </div>
+    
+    <!-- tlf -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="EmployeeAttributes.tlf" />
+        </span>
+        <span class="entry">    
+            <html:text property="tlf" size="16" maxlength="50" />
+            <html:errors property="tlf" />
+        </span>
+    </div>
+    
+    <!-- cod_postal -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="EmployeeAttributes.cod_postal" />
+        </span>
+        <span class="entry">    
+            <html:text property="cod_postal" size="16" maxlength="50" />
+            <html:errors property="cod_postal" />
+        </span>
+    </div>
+    
+    <!-- poblacion -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="EmployeeAttributes.poblacion" />
+        </span>
+        <span class="entry">    
+            <html:text property="poblacion" size="16" maxlength="20" />
+            <html:errors property="poblacion" />
+        </span>
+    </div>
+    
+    <!-- Provincia -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="EmployeeAttributes.provincia" />
+        </span>
+        <span class="entry">    
+            <html:text property="provincia" size="16" maxlength="20" />
+            <html:errors property="provincia" />
+        </span>
+    </div>
+    
+    <!-- num_cuenta -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="EmployeeAttributes.num_cuenta" />
+        </span>
+        <span class="entry">    
+            <html:text property="num_cuenta" size="20" maxlength="20" />
+            <html:errors property="num_cuenta" />
+        </span>
+    </div>
+    
+    <!-- esAdmin -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="EmployeeAttributes.esAdmin" />
+        </span>
+        <span class="entry">    
+            <html:checkbox property="esAdmin"/>
+        </span>
+    </div>
+    
+    <!-- Register button -->
+    
+    <div class="button">
+        <html:submit><fmt:message key="Buttons.register" /></html:submit>
+    </div>
+    
+</html:form>
+
+	<html:link action="Welcome.do"><fmt:message key="Buttons.back"/></html:link>
+
+</jsp:root>

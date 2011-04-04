@@ -1,0 +1,13 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+    
+<h2 class="info">
+    <fmt:message key="BuyProduct.success"/>
+</h2>
+
+<p><fmt:message key="BuyProductContent.add"/></p>
+
+</jsp:root>

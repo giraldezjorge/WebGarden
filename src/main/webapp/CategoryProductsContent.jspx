@@ -1,0 +1,90 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<h2 class="info">
+    <fmt:message key="CategoryProducts.title"/>
+</h2>
+
+<c:choose>
+
+<c:when test="${empty requestScope.products}">
+    <p><fmt:message key="CategoryProductsContent.noProducts"/></p>
+</c:when>
+
+<!-- Print current product chunk. -->
+
+<c:otherwise>
+
+<table class="categoryProducts">
+
+<tr>
+    <th><fmt:message key="ProductAttributes.id"/></th>
+    <th><fmt:message key="ProductAttributes.name"/></th>
+    <th><fmt:message key="ProductAttributes.category"/></th>
+</tr>
+
+<c:forEach var="product" items="${requestScope.products}">
+
+<tr>
+
+    <td>
+        <c:out value="${product.idProducto}"></c:out>
+    </td>
+    
+    <td>
+		<c:url var="productDetailsURL" value="FindProducts.do">
+            <c:param name="identifierType" value="NAM_ID"/>
+            <c:param name="identifier" value="${product.nombre}"/>
+        </c:url>        
+        <a href="${productDetailsURL}">${product.nombre}</a>
+	</td>
+	
+	<td>
+		<c:out value="${product.categoria}"></c:out>
+	</td>
+	
+</tr>
+
+</c:forEach>
+
+</table>
+
+</c:otherwise>
+
+</c:choose>
+
+<!-- "Previous" and "Next" links. -->
+
+<div class="previousNextLinks">
+
+<span class="previousLink">
+
+<c:if test="${!empty requestScope.previous}">
+
+    <html:link action="FindProducts.do" name="previous">
+        <fmt:message key="Links.previous"/>
+    </html:link>
+
+</c:if>
+
+</span>
+
+<span class="nextLink">
+
+<c:if test="${!empty requestScope.next}">
+
+    <html:link action="FindProducts.do" name="next">
+        <fmt:message key="Links.next"/>
+    </html:link>
+
+</c:if>
+
+</span>
+
+</div>
+
+</jsp:root>

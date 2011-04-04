@@ -1,0 +1,35 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<h2 class="info">
+    <fmt:message key="RemoveEmployee.title"/>
+</h2>
+
+<html:xhtml/>
+
+<html:form action="RemoveEmployee.do" focus="identifier" method="GET">
+
+	<html:hidden property="identifierType" value="NIF_ID"/>
+	
+    <div class="field">
+        <span class="label">
+            <fmt:message key="RemoveEmployeeContent.identifier"/>
+        </span>
+        <span class="entry">
+            <html:text property="identifier" size="16" maxlength="16"/>
+            <html:errors property="identifier"/>
+        </span>
+    </div>
+
+    <div class="button">
+        <html:submit>
+            <fmt:message key="Buttons.remove"/>
+        </html:submit>
+    </div>
+
+</html:form>
+
+</jsp:root>

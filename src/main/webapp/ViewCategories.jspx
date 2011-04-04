@@ -1,0 +1,83 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<h2 class="info">
+    <fmt:message key="ViewCategories.title"/>
+</h2>
+
+<html:xhtml/>
+<c:choose>
+<c:when test="${empty requestScope.categorias}">
+	<p><fmt:message key="ViewCategories.noCategories"/></p>
+</c:when>	
+<c:otherwise>
+	<table class="categoriesTable">
+		<tr>
+			<th><fmt:message key="CategoryAttributes.id"/></th>
+			<th><fmt:message key="CategoryAttributes.name"/></th>
+			<th><fmt:message key="CategoryAttributes.father"/></th>
+		</tr>
+		
+		<c:forEach var="category" items="${requestScope.categorias}">
+			<tr>
+				<td>
+					<c:out value="${category.idCategoria}"></c:out>
+				</td>
+				<td>
+					<c:choose>
+					<c:when test="${sessionScope.type == 'employee'}">
+					<c:out value="${category.nombre}"></c:out>
+					</c:when>
+        			<c:otherwise>
+        			<c:url var="categorySonsURL" value="FindCategories.do">
+					<c:param name="identifierType" value="NAM_ID"/>
+            		<c:param name="identifier" 
+            				 value="${category.nombre}"/>
+        			</c:url>
+        			<a href="${categorySonsURL}">${category.nombre}</a>        		
+        			</c:otherwise>
+        			</c:choose>						
+				</td>
+				<td>
+					<c:out value="${category.padre}"></c:out>
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
+</c:otherwise>
+</c:choose>
+	<!-- "Previous" and "Next" links. -->
+
+	<div class="previousNextLinks">
+	
+	<span class="previousLink">
+	
+	<c:if test="${!empty requestScope.previous}">
+	
+	    <html:link action="ViewCategories.do" name="previous">
+	        <fmt:message key="Links.previous"/>
+	    </html:link>
+	
+	</c:if>
+	
+	</span>
+	
+	<span class="nextLink">
+	
+	<c:if test="${!empty requestScope.next}">
+	
+	    <html:link action="ViewCategories.do" name="next">
+	        <fmt:message key="Links.next"/>
+	    </html:link>
+	
+	</c:if>
+	
+	</span>
+	
+	</div>
+	
+</jsp:root>

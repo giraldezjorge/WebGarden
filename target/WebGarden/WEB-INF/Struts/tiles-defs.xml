@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+ 
+    <definition name=".Base" page="/commontiles/layouts/DefaultLayout.jspx">
+        <put name="title"  value="${title}" />
+        <put name="header" value="/commontiles/DefaultHeader.jspx" />
+        <put name="sidebar" value="/commontiles/DefaultSidebar.jspx" />
+        <put name="content"  value="${content}" />
+        <put name="footer" value="/commontiles/DefaultFooter.jspx" />
+    </definition>
+    
+    <definition name=".Authentication" extends=".Base" >
+        <put name="title"  value="Authentication.title" />
+        <put name="content" value="/AuthenticationContent.jspx" />
+    </definition>
+
+    <definition name=".SuccessfulOperation" extends=".Base" >
+        <put name="title" value="SuccessfulOperation.title" />
+        <put name="content" value="/SuccessfulOperationContent.jspx" />
+    </definition>
+    
+    <definition name=".InternalError" extends=".Base" >
+        <put name="title" value="InternalError.title" />
+        <put name="content" value="/InternalErrorContent.jspx" />
+    </definition>
+
+    <definition name=".Welcome" extends=".Base" >
+        <put name="title" value="Welcome.title" />
+        <put name="content" value="/WelcomeContent.jspx" />
+    </definition>
+    
+    <definition name=".About" extends=".Base" >
+        <put name="title" value="About.title" />
+        <put name="content" value="/AboutContent.jspx" />
+    </definition>
+    
+    <definition name=".Contact" extends=".Base" >
+        <put name="title" value="Contact.title" />
+        <put name="content" value="/ContactContent.jspx" />
+    </definition>
+    
+    <definition name=".ChangePassword" extends=".Base" >
+        <put name="title"  value="ChangePassword.title" />       
+        <put name="content" value="/ChangePasswordContent.jspx" />
+    </definition>        
+    
+    <definition name=".RegisterClient" extends=".Base">
+    	<put name="title" value="RegisterClient.title" />
+    	<put name="content" value="/RegisterClientContent.jspx"/>
+    </definition>
+    
+    <definition name=".RegisterEmployee" extends=".Base">
+    	<put name="title" value="RegisterEmployee.title" />
+    	<put name="content" value="/RegisterEmployeeContent.jspx"/>
+    </definition>
+    
+    <definition name=".RegisterCategory" extends=".Base">
+    	<put name="title" value="RegisterCategory.title" />
+    	<put name="content" value="/RegisterCategoryContent.jspx"/>
+    </definition>
+    
+    <definition name=".RegisterProduct" extends=".Base">
+    	<put name="title" value="RegisterProduct.title" />
+    	<put name="content" value="/RegisterProductContent.jspx"/>
+    </definition>
+    
+    <definition name=".RegisterMaintenance" extends=".Base">
+    	<put name="title" value="RegisterMaintenance.title" />
+    	<put name="content" value="/RegisterMaintenanceContent.jspx"/>
+    </definition>
+    
+    <definition name=".ViewClients" extends=".Base">
+    	<put name="title" value="ViewClients.title" />
+    	<put name="content" value="/ViewClients.jspx"/>
+    </definition>
+    
+    <definition name=".ViewClientsToRemove" extends=".Base">
+    	<put name="title" value="ViewClientsToRemove.title" />
+    	<put name="content" value="/ViewClientsToRemove.jspx"/>
+    </definition>
+    
+    <definition name=".ViewCategories" extends=".Base">
+    	<put name="title" value="ViewCategories.title" />
+    	<put name="content" value="/ViewCategories.jspx"/>
+    </definition>
+    
+    <definition name=".ViewEmployees" extends=".Base">
+    	<put name="title" value="ViewEmployees.title" />
+    	<put name="content" value="/ViewEmployees.jspx"/>
+    </definition>
+    
+    <definition name=".ViewProducts" extends=".Base">
+    	<put name="title" value="ViewProducts.title" />
+    	<put name="content" value="/ViewProducts.jspx"/>
+    </definition>
+    
+    <definition name=".FindClients" extends=".Base" >
+        <put name="title" value="FindClients.title" />
+        <put name="content" value="/FindClientsContent.jspx" />
+    </definition>
+    
+    <definition name=".ClientDetails" extends=".Base" >
+        <put name="title" value="ClientDetails.title" />
+        <put name="content" value="/ClientDetailsContent.jspx" />
+    </definition>
+    
+    <definition name=".FindEmployees" extends=".Base" >
+        <put name="title" value="FindEmployees.title" />
+        <put name="content" value="/FindEmployeesContent.jspx" />
+    </definition>
+    
+    <definition name=".EmployeeDetails" extends=".Base" >
+        <put name="title" value="EmployeeDetails.title" />
+        <put name="content" value="/EmployeeDetailsContent.jspx" />
+    </definition>
+    
+    <definition name=".FindCategories" extends=".Base" >
+        <put name="title" value="FindCategories.title" />
+        <put name="content" value="/FindCategoriesContent.jspx" />
+    </definition>
+    
+    <definition name=".CategoryDetails" extends=".Base" >
+        <put name="title" value="CategoryDetails.title" />
+        <put name="content" value="/CategoryDetailsContent.jspx" />
+    </definition>
+    
+    <definition name=".CategorySons" extends=".Base" >
+        <put name="title" value="CategorySons.title" />
+        <put name="content" value="/CategorySonsContent.jspx" />
+    </definition>
+    
+    <definition name=".FindProducts" extends=".Base" >
+        <put name="title" value="FindProducts.title" />
+        <put name="content" value="/FindProductsContent.jspx" />
+    </definition>
+    
+    <definition name=".ProductDetails" extends=".Base" >
+        <put name="title" value="ProductDetails.title" />
+        <put name="content" value="/ProductDetailsContent.jspx" />
+    </definition>
+    
+    <definition name=".CategoryProducts" extends=".Base" >
+        <put name="title" value="CategoryProducts.title" />
+        <put name="content" value="/CategoryProductsContent.jspx" />
+    </definition>
+    
+    <definition name=".FindBills" extends=".Base" >
+        <put name="title" value="FindBills.title" />
+        <put name="content" value="/FindBillsContent.jspx" />
+    </definition>
+    
+    <definition name=".BillDetails" extends=".Base" >
+        <put name="title" value="BillDetails.title" />
+        <put name="content" value="/BillDetailsContent.jspx" />
+    </definition>
+    
+    <definition name=".ClientBills" extends=".Base" >
+        <put name="title" value="ClientBills.title" />
+        <put name="content" value="/ClientBillsContent.jspx" />
+    </definition>
+    
+    <definition name=".FindMaintenances" extends=".Base" >
+        <put name="title" value="FindMaintenances.title" />
+        <put name="content" value="/FindMaintenancesContent.jspx" />
+    </definition>
+    
+    <definition name=".MaintenanceDetails" extends=".Base" >
+        <put name="title" value="MaintenanceDetails.title" />
+        <put name="content" value="/MaintenanceDetailsContent.jspx" />
+    </definition>
+    
+    <definition name=".ClientMaintenances" extends=".Base" >
+        <put name="title" value="ClientMaintenances.title" />
+        <put name="content" value="/ClientMaintenancesContent.jspx" />
+    </definition>
+    
+    <definition name=".AssignEmployeeToMaintenance" extends=".Base" >
+    	<put name="title" value="AssignEmployeeToMaintenance.title" />
+    	<put name="content" value="/AssignEmployeeToMaintenanceContent.jspx"/>
+    </definition>
+
+    <definition name=".DeleteEmployeeToMaintenance" extends=".Base" >
+    	<put name="title" value="DeleteEmployeeToMaintenance.title" />
+    	<put name="content" value="/DeleteEmployeeToMaintenanceContent.jspx"/>
+    </definition>
+    
+    <definition name=".Remove" extends=".Base" >
+    	<put name="title" value="Remove.title" />
+    	<put name="content" value="/RemoveContent.jspx"/>
+    </definition>
+    
+    <definition name=".RemoveMaintenance" extends=".Base" >
+    	<put name="title" value="RemoveMaintenance.title" />
+    	<put name="content" value="/RemoveMaintenanceContent.jspx"/>
+    </definition>
+    
+    <definition name=".RemoveCategory" extends=".Base" >
+    	<put name="title" value="RemoveCategory.title" />
+    	<put name="content" value="/RemoveCategoryContent.jspx"/>
+    </definition>
+    
+    <definition name=".RemoveProduct" extends=".Base" >
+    	<put name="title" value="RemoveProduct.title" />
+    	<put name="content" value="/RemoveProductContent.jspx"/>
+    </definition>
+    
+    <definition name=".RemoveClient" extends=".Base" >
+    	<put name="title" value="RemoveClient.title" />
+    	<put name="content" value="/RemoveClientContent.jspx"/>
+    </definition>
+    
+    <definition name=".RemoveEmployee" extends=".Base" >
+    	<put name="title" value="RemoveEmployee.title" />
+    	<put name="content" value="/RemoveEmployeeContent.jspx"/>
+    </definition>
+    
+    <definition name=".UpdateCategoryDetails" extends=".Base" >
+    	<put name="title" value="UpdateCategoryDetails.title" />
+    	<put name="content" value="/UpdateCategoryDetailsContent.jspx"/>
+    </definition>
+    
+    <definition name=".UpdateClientDetails" extends=".Base" >
+    	<put name="title" value="UpdateClientDetails.title" />
+    	<put name="content" value="/UpdateClientDetailsContent.jspx"/>
+    </definition>
+    
+    <definition name=".UpdateEmployeeDetails" extends=".Base" >
+    	<put name="title" value="UpdateEmployeeDetails.title" />
+    	<put name="content" value="/UpdateEmployeeDetailsContent.jspx"/>
+    </definition>
+    
+    <definition name=".UpdateProductDetails" extends=".Base" >
+    	<put name="title" value="UpdateProductDetails.title" />
+    	<put name="content" value="/UpdateProductDetailsContent.jspx"/>
+    </definition>
+
+    <definition name=".UpdateMaintenanceDetails" extends=".Base" >
+    	<put name="title" value="UpdateMaintenanceDetails.title" />
+    	<put name="content" value="/UpdateMaintenanceDetailsContent.jspx"/>
+    </definition>
+
+	<definition name=".BuyProduct" extends=".Base" >
+    	<put name="title" value="BuyProduct.title" />
+    	<put name="content" value="/BuyProductContent.jspx"/>
+    </definition>
+    
+    <definition name=".ShoppingCart" extends=".Base" >
+    	<put name="title" value="ShoppingCart.title" />
+    	<put name="content" value="/ShoppingCartContent.jspx"/>
+    </definition>
+    <definition name=".ViewBills" extends=".Base">
+    	<put name="title" value="ViewBills.title" />
+    	<put name="content" value="/ViewBills.jspx"/>
+    </definition>
+    <definition name=".CategoriesTreeDetails" extends=".Base" >
+    	<put name="title" value="CategoriesTreeDetails.title" />
+    	<put name="content" value="/CategoriesTreeDetailsContent.jspx" />
+    </definition>
+    
+</tiles-definitions>

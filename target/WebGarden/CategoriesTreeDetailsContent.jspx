@@ -1,0 +1,116 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<div id="categorySons">
+	
+	<h2 class="info">
+	    <c:out value="${requestScope.categoryName}"></c:out>
+	</h2>
+	
+	<table class="categoriesTreeSonsDetails">
+	<c:forEach var="category" items="${requestScope.categorySons}">
+	<tr>
+		<td> 
+			<c:url var="categoriesTreeURL" value="CategoriesTree.do">
+			<c:param name="identifier" value="${category.idCategoria}"/>
+			</c:url>        
+			<a href="${categoriesTreeURL}">
+				<c:out value="${category.nombre}"/>
+			</a>
+		</td>
+	</tr>
+	</c:forEach>
+	</table>
+
+</div>
+
+<div id="categoryProducts">
+
+	<h2 class="info">
+	    <fmt:message key="CategoriesTreeDetails.products"/>
+	</h2>
+	
+	<c:choose>
+	
+	<c:when test="${empty requestScope.categoryProducts}">
+	    <p><fmt:message key="CategoryProductsContent.noProducts"/></p>
+	</c:when>
+	
+	<c:otherwise>
+	
+	<table class="categoriesTreeProductsDetails">	
+	
+	<c:forEach var="product" items="${requestScope.categoryProducts}">
+	
+	<tr>
+		<td>
+			<img id="product" src="images/products/${product.nombre}.jpg"/>			
+		</td>
+	</tr>
+	<tr>
+	    <td>
+			<c:url var="productDetailsURL" value="FindProducts.do">
+	            <c:param name="identifierType" value="NAM_ID"/>
+	            <c:param name="identifier" value="${product.nombre}"/>
+	        </c:url>        
+	        <a href="${productDetailsURL}">${product.nombre}</a>
+		</td>
+	</tr>
+	
+	</c:forEach>
+	
+	</table>
+	
+	</c:otherwise>
+	
+	</c:choose>
+ 
+</div>
+
+<!-- "Previous" and "Next" links. -->
+
+<div class="previousNextLinks">
+
+<span class="previousLink">
+
+<c:if test="${!empty requestScope.previous}">
+
+    <html:link action="CategoriesTree.do" name="previous">
+        <fmt:message key="Links.previous"/>
+    </html:link>
+
+</c:if>
+
+</span>
+
+<span class="nextLink">
+
+<c:if test="${!empty requestScope.next}">
+
+    <html:link action="CategoriesTree.do" name="next">
+        <fmt:message key="Links.next"/>
+    </html:link>
+
+</c:if>
+
+</span>
+
+</div>
+
+<div id="back">
+	<c:choose>
+	<c:when test="${requestScope.id == 0}">
+	</c:when>
+	<c:otherwise>
+		<html:link action="CategoriesTree.do?identifier=${requestScope.id}">
+	        <fmt:message key="Buttons.back"/>
+	    </html:link>
+	</c:otherwise>
+	</c:choose>
+</div>
+
+</jsp:root>

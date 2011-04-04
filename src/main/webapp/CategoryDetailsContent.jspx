@@ -1,0 +1,36 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<h2 class="info">
+    <fmt:message key="CategoryDetails.title"/>
+</h2>
+
+<table class="categoryDetails">
+
+    <tr>
+        <th><fmt:message key="CategoryAttributes.id"/></th>
+        <td><c:out value="${requestScope.category.idCategoria}"/></td>
+    </tr>
+
+    <tr>
+        <th><fmt:message key="CategoryAttributes.name"/></th>
+        <td><c:out value="${requestScope.category.nombre}"/></td>
+    </tr>
+
+    <tr>
+        <th><fmt:message key="CategoryAttributes.father"/></th>
+        <td><c:out value="${requestScope.category.padre}"/></td>
+    </tr>
+
+</table>
+
+<html:link action="ModifyCategoryDetails.do" >
+	<fmt:message key="Buttons.modify"/>
+	<html:param name="id" value="${requestScope.category.idCategoria}"/>
+</html:link>
+
+</jsp:root>

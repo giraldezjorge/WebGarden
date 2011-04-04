@@ -1,0 +1,45 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<div id="headerContent">
+
+	<div id="menu">
+		<ul>
+			<li class="current_page_item"><a href="Welcome.do">
+				<fmt:message key="DefaultHeader.home"/></a></li>
+			<li><a href="About.do">
+				<fmt:message key="DefaultHeader.about"/></a></li>
+			<li><a href="Contact.do">
+				<fmt:message key="DefaultHeader.contact"/></a></li>
+		</ul>
+	</div>
+	
+	<div id="idioms">
+	
+		<html:link action="ChangeLocale.do">
+			<html:param name="locale" value="gl_ES"/>
+			<img id="flag" src="images/galician.gif"/>		
+		</html:link>
+		
+		<html:link action="ChangeLocale.do">
+			<html:param name="locale" value="es_ES"/>
+			<img id="flag" src="images/spanish.gif"/>		
+		</html:link>
+		
+		<html:link action="ChangeLocale.do">
+			<html:param name="locale" value="en_EN"/>
+			<img id="flag" src="images/english.gif"/>	
+		</html:link>
+			
+	</div>	
+</div>
+
+<div id="logo">
+	<h1><a href="Welcome.do"><fmt:message key="DefaultHeader.header"/></a></h1>
+	<p><em><fmt:message key="DefaultHeader.subHeader"/></em></p>
+</div>
+<hr />
+
+</jsp:root>

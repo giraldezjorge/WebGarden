@@ -1,0 +1,81 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<h2 class="info">
+    <fmt:message key="EmployeeDetails.title"/>
+</h2>
+
+<table class="employeeDetails">
+
+    <tr>
+        <th><fmt:message key="EmployeeAttributes.firstName"/></th>
+        <td><c:out value="${requestScope.employee.pila}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="EmployeeAttributes.surname1"/></th>
+        <td><c:out value="${requestScope.employee.ap1}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="EmployeeAttributes.surname2"/></th>
+        <td><c:out value="${requestScope.employee.ap2}"/></td>
+    </tr>
+    
+    <tr>
+    	<th><fmt:message key="EmployeeAttributes.NIF"/></th>
+    	<td><c:out value="${requestScope.employee.NIF}" /></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="EmployeeAttributes.dir"/></th>
+        <td><c:out value="${requestScope.employee.dir}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="EmployeeAttributes.cod_postal"/></th>
+        <td><c:out value="${requestScope.employee.cod_postal}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="EmployeeAttributes.tlf"/></th>
+        <td><c:out value="${requestScope.employee.tlf}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="EmployeeAttributes.poblacion"/></th>
+        <td><c:out value="${requestScope.employee.poblacion}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="EmployeeAttributes.provincia"/></th>
+        <td><c:out value="${requestScope.employee.provincia}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="EmployeeAttributes.num_cuenta"/></th>
+        <td><c:out value="${requestScope.employee.num_cuenta}"/></td>
+    </tr>
+    
+    <tr>
+        <th><fmt:message key="EmployeeAttributes.esAdmin"/></th>
+        <td><c:out value="${requestScope.employee.esAdmin}"/></td>
+    </tr>
+
+</table>
+
+<c:choose>
+<c:when test="${requestScope.employee.NIF == 'admin'}">
+</c:when>
+<c:otherwise>
+<html:link action="ModifyEmployeeDetails.do" ><fmt:message key="Buttons.modify"/>
+	<html:param name="id" value="${requestScope.employee.NIF}"/>
+</html:link>
+</c:otherwise>
+</c:choose>
+
+</jsp:root>

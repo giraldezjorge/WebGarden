@@ -1,0 +1,47 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<h2 class="info">
+    <fmt:message key="DeleteEmployeeToMaintenance.title"/>
+</h2>
+
+<html:xhtml/>
+
+<html:form action="DeleteEmployeeToMaintenance.do" focus="idMantenimiento">
+        
+    <!-- idMantenimiento -->
+
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="MaintenanceAttributes.id" />
+        </span>
+        <span class="entry">    
+            <html:text property="idMantenimiento" size="16" maxlength="16" />
+            <html:errors property="idMantenimiento" />
+        </span>
+    </div>
+    
+    <!-- empleado -->
+    
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="Maintenance_EmpAttributes.employee" />
+        </span>
+        <span class="entry">    
+            <html:text property="empleado" size="16" maxlength="16" />
+            <html:errors property="empleado" />
+        </span>
+    </div>
+        
+    <!-- Delete button -->
+    
+    <div class="button">
+        <html:submit><fmt:message key="Buttons.delete" /></html:submit>
+    </div>
+    
+</html:form>
+
+</jsp:root>

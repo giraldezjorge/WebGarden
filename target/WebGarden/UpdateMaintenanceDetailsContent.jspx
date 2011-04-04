@@ -1,0 +1,90 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<h2 class="info">
+    <fmt:message key="UpdateMaintenanceDetails.title"/>
+</h2>
+
+<html:xhtml/>
+
+<html:form action="UpdateMaintenanceDetails.do">
+        
+	<html:hidden property="idMantenimiento" />        
+    
+    <div class="field">
+        <span class="label">
+            <fmt:message key="RegisterMaintenanceContent.startDate"/>
+        </span>
+        <span class="entry">
+         
+            <html:select property="day">
+                <html:options name="dateRanges" property="days"/>
+            </html:select>
+            
+            <![CDATA[ &nbsp; ]]>            
+            <html:select property="month">
+                <html:options name="dateRanges" property="months"/>
+            </html:select>
+
+            <![CDATA[ &nbsp; ]]>
+            <html:select property="year">
+                <html:options name="dateRanges" property="years"/>
+            </html:select>
+                
+        </span>
+    </div>
+    
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="MaintenanceAttributes.jobDay" />
+        </span>
+        <span class="entry">    
+            <html:select property="nameDay">
+                <html:options name="dateRanges" property="nameDays"/>
+            </html:select>
+            <![CDATA[ &nbsp; ]]>
+            <fmt:message key="RegisterMaintenanceContent.hour"/>
+            <![CDATA[ &nbsp; ]]>
+            <html:select property="hour">
+                <html:options name="dateRanges" property="hours"/>
+            </html:select>
+            
+            <![CDATA[ &nbsp; ]]>
+            <html:select property="minutes">
+                <html:options name="dateRanges" property="minutes"/>
+            </html:select>
+        </span>
+    </div>
+    
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="MaintenanceAttributes.place" />
+        </span>
+        <span class="entry">    
+            <html:text property="lugar" size="16" maxlength="50" />
+            <html:errors property="lugar" />
+        </span>
+    </div>
+    
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="MaintenanceAttributes.description" />
+        </span>
+        <span class="entry">  
+            <html:textarea property="descripcion" />
+            <html:errors property="descripcion" />
+        </span>
+    </div>
+        
+    <!-- Register button -->
+    
+    <div class="button">
+        <html:submit><fmt:message key="Buttons.modify" /></html:submit>
+    </div>
+    
+</html:form>
+
+</jsp:root>

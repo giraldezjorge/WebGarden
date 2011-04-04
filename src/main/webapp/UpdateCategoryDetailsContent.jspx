@@ -1,0 +1,51 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:html="http://struts.apache.org/tags-html"
+          version="2.0">
+
+<h2 class="info">
+    <fmt:message key="UpdateCategoryDetails.title"/>
+</h2>
+
+<html:xhtml/>
+
+<html:form action="UpdateCategoryDetails.do" focus="nombre">
+        
+    <html:hidden property="idCategoria" />    
+        
+    <!-- Nombre -->
+    
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="CategoryAttributes.name" />
+        </span>
+        <span class="entry">    
+            <html:text property="nombre" size="16" maxlength="16" />
+            <html:errors property="nombre" />
+        </span>
+    </div>
+    
+    <!-- Padre -->
+    
+    <div class="field">        
+        <span class="label">
+            <fmt:message key="CategoryAttributes.father" />
+        </span>
+        <span class="entry">    
+            <html:text property="padre" size="16" maxlength="20" />
+            <html:errors property="padre" />
+        </span>
+    </div>
+        
+    <!-- Modify button -->
+    
+    <div class="button">
+        <html:submit><fmt:message key="Buttons.modify" /></html:submit>
+    </div>
+    
+</html:form>
+
+
+</jsp:root>
